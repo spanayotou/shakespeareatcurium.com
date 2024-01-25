@@ -5,21 +5,7 @@
       "style": "float"
     },
     "name": "Shakespeare at Kourion",
-    "color": "default",
-    "nav": [
-      {
-        "href": "",
-        "label": "Home"
-      },
-      {
-        "href": "about",
-        "label": "About"
-      },
-      {
-        "href": "posts",
-        "label": "Blog"
-      }
-    ]
+    "color": "default"
   },
   "footer": {
     "color": "default",
