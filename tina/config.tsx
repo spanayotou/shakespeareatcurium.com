@@ -33,4 +33,12 @@ const config = defineConfig({
   },
 });
 
-export default config;
+export default defineConfig({
+  // ...
+  media: {
+    tina: {
+      publicFolder: 'public',
+      mediaRoot: 'uploads',
+    },
+  },
+})
