@@ -1,8 +1,4 @@
-import type { Collection } from "tinacms";
-import { iconSchema } from "../../components/util/icon";
-import { ColorPickerInput } from "../fields/color";
-
-const Global: Collection = {
+const Global = {
   label: "Global",
   name: "global",
   path: "content/global",
@@ -58,6 +54,12 @@ const Global: Collection = {
             },
           ],
         },
+        {
+          type: "image",
+          label: "Header Image",
+          name: "image",
+        },
+        // ... other fields for the header section
       ],
     },
     {
@@ -107,8 +109,6 @@ const Global: Collection = {
       type: "object",
       label: "Theme",
       name: "theme",
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       fields: [
         {
           type: "string",
