@@ -2,6 +2,29 @@ import type { Collection } from "tinacms";
 import { iconSchema } from "../../components/util/icon";
 import { ColorPickerInput } from "../fields/color";
 
+
+interface ImageType {
+  src: string;
+  // Add other image-related fields if necessary
+}
+
+interface NavLink {
+  href: string;
+  label: string;
+  // Add other NavLink-related fields if necessary
+}
+
+interface GlobalHeader {
+  image?: ImageType;
+  name: string;
+  color: string;
+  nav?: NavLink[];
+  // Add other GlobalHeader-related fields if necessary
+}
+
+
+
+
 const Global: Collection = {
   label: "Global",
   name: "global",
