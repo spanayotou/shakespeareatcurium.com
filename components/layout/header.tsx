@@ -44,7 +44,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
             <Link href="/">
               <a className="flex gap-1 items-center whitespace-nowrap tracking-[.002em]">
                 <MediaUploadField
-                  name={tinaField(data, "image").name}
+                  name={tinaField(data.header, "image").name}
                   parse={(media) => media.previewSrc}
                   upload={(file) => cms.media.persist(file)}
                 >
@@ -59,8 +59,8 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
                         />
                       )}
                       {!image && (
-                        <span data-tina-field={tinaField(data, "name")}>
-                          {data.name}
+                        <span data-tina-field={tinaField(data.header, "name")}>
+                          {data.header.name}
                         </span>
                       )}
                     </button>
