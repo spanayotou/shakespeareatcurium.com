@@ -7,6 +7,11 @@ import { Icon } from "../util/icon";
 import { tinaField } from "tinacms/dist/react";
 import { GlobalHeader } from "../../tina/__generated__/types";
 
+type ImageType = {
+  src: string;
+  alt: string;
+};
+
 export const Header = ({ data }: { data: GlobalHeader }) => {
   const router = useRouter();
   const theme = useTheme();
@@ -75,7 +80,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
               {data.image && (
                 <img
                   src={data.image.src} // Make sure to adjust the path accordingly
-                  alt="Header Image"
+                  alt={data.image.alt} // Make sure to adjust accordingly
                   className="w-6 h-6 rounded-full" // Adjust the size and styling as needed
                 />
               )}
@@ -156,4 +161,3 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
     </div>
   );
 };
-
