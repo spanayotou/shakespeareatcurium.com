@@ -3,16 +3,18 @@ import { iconSchema } from "../../components/util/icon";
 import { ColorPickerInput } from "../fields/color";
 
 
-interface ImageType {
+export interface ImageType {
   src: string;
-  // Add other image-related fields if necessary
+  alt: string;
 }
+
 
 interface NavLink {
   href: string;
   label: string;
   // Add other NavLink-related fields if necessary
 }
+
 
 interface GlobalHeader {
   image?: ImageType;
@@ -21,8 +23,6 @@ interface GlobalHeader {
   nav?: NavLink[];
   // Add other GlobalHeader-related fields if necessary
 }
-
-
 
 
 const Global: Collection = {
@@ -46,7 +46,7 @@ const Global: Collection = {
           name: "name",
         },
         {
-          type: "image", // Add an image field for the header
+          type: "image", 
           label: "Header Image",
           name: "image",
         },

@@ -6,11 +6,9 @@ import { useTheme } from ".";
 import { Icon } from "../util/icon";
 import { tinaField } from "tinacms/dist/react";
 import { GlobalHeader } from "../../tina/__generated__/types";
+import { ImageType} from "../../tina/collection/global";
 
-type ImageType = {
-  src: string;
-  alt: string;
-};
+
 
 export const Header = ({ data }: { data: GlobalHeader }) => {
   const router = useRouter();
@@ -78,12 +76,15 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
               className="flex gap-1 items-center whitespace-nowrap tracking-[.002em]"
             >
               {data.image && (
+              <>
+                {console.log(data.image)}
                 <img
-                  src={data.image.src} // Make sure to adjust the path accordingly
-                  alt={data.image.alt} // Make sure to adjust accordingly
-                  className="w-6 h-6 rounded-full" // Adjust the size and styling as needed
+                  src={data.image.src}
+                  alt={data.image.alt}
+                  className="w-6 h-6 rounded-full"
                 />
-              )}
+              </>
+            )}
               <span data-tina-field={tinaField(data, "name")}>{data.name}</span>
             </Link>
           </h4>
