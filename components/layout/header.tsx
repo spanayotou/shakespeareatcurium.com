@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Container } from "../util/container";
@@ -6,10 +6,13 @@ import { useTheme } from ".";
 import { Icon } from "../util/icon";
 import { tinaField } from "tinacms/dist/react";
 import { GlobalHeader } from "../../tina/__generated__/types";
+import { MediaUploadField } from "tinacms/dist/react";
+import { useCMS } from "tinacms";
 
 export const Header = ({ data }: { data: GlobalHeader }) => {
   const router = useRouter();
   const theme = useTheme();
+  const cms = useCMS();
 
   const headerColor = {
     default:
@@ -31,49 +34,45 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
       ? headerColor.primary[theme.color]
       : headerColor.default;
 
-  const [isClient, setIsClient] = React.useState(false);
-  React.useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const [image, setImage] = useState<File | null>(null);
 
   return (
-    <div
-      className={`relative overflow-hidden bg-gradient-to-b <span class="math-inline">\{headerColorCss\}\`\}
-\>
-<Container size\="custom" className\="py\-0 relative z\-10 max\-w\-8xl"\>
-<div className\="flex items\-center justify\-between gap\-6"\>
-<h4 className\="select\-none text\-lg font\-bold tracking\-tight my\-4 transition duration\-150 ease\-out transform"\>
-<Link
-href\="/"</0\>
-className\="flex gap\-1 items\-center whitespace\-nowrap tracking\-\[\.002em\]"
-\>
-<Image
-src\="/your\-image\-url\.png"
-alt\="Your image alt text"
-width\="50"
-className\="rounded\-lg border\-gray\-300"
-/\>
-<span data\-tina\-field\=\{tinaField\(data, "name"\)\}\>\{data\.name\}</span\>
-</Link\>
-</h4\>
-<ul className\="flex gap\-6 sm\:gap\-8 lg\:gap\-10 tracking\-\[\.002em\] \-mx\-4"\>
-\{data\.nav &&
-data\.nav\.map\(\(item, i\) \=\> \(
-<li
-key\=\{\`</span>{item.label}-<span class="math-inline">\{i\}\`\}
-className\=\{\`</span>{
-                    activeItem ? activeItemClasses[theme.color] : ""
-                  }`}
+    <div className={`relative overflow-hidden bg-gradient-to-b ${headerColorCss}`}>
+      <Container size="custom" className="py-0 relative z-10 max-w-8xl">
+        <div className="flex items-center justify-between gap-6">
+          <h4 className="select-none text-lg font-bold tracking-tight my-4 transition duration-150 ease-out transform">
+            <Link href="/">
+              <a className="flex gap-1 items-center whitespace-nowrap tracking-[.002em]">
+                <MediaUploadField
+                  name={tinaField(data, "image").name}
+                  parse={(media) => media.previewSrc}
+                  upload={(file) => cms.media.persist(file)}
                 >
-                  <Link
-                    data-tina-field={tinaField(item, "label")}
-                    href={`/${item.href}`}
-                    className={`relative select-none	text-base inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-8 px-4 ${
-                      activeItem ? `` : `opacity-70`
-                    }`}
-                  >
-                    {item.label}
-                    {activeItem && (
-                      <svg
-                        className={`absolute bottom-0 left-1/2 w-[180%] h-full -translate-x-1/2 -z-1 opacity-10 dark:opacity-15 ${
-                          activeBackgroundClasses[theme.color]
+                  {({ open }) => (
+                    <button onClick={open}>
+                      {image && (
+                        <img
+                          src={URL.createObjectURL(image)}
+                          alt="Uploaded Image"
+                          width="50"
+                          className="rounded-lg border-gray-300"
+                        />
+                      )}
+                      {!image && (
+                        <span data-tina-field={tinaField(data, "name")}>
+                          {data.name}
+                        </span>
+                      )}
+                    </button>
+                  )}
+                </MediaUploadField>
+              </a>
+            </Link>
+          </h4>
+
+          {/* ... existing code */}
+        </div>
+      </Container>
+    </div>
+  );
+};
