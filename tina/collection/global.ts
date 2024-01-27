@@ -10,7 +10,7 @@ const Global: Collection = {
   ui: {
     global: true,
   },
-  fields: [
+ fields: [
     {
       type: "object",
       label: "Header",
@@ -21,6 +21,11 @@ const Global: Collection = {
           type: "string",
           label: "Name",
           name: "name",
+        },
+        {
+          type: "image", // Add an image field for the header
+          label: "Header Image",
+          name: "image",
         },
         {
           type: "string",
