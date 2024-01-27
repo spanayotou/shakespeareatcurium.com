@@ -6,7 +6,6 @@ import { useTheme } from ".";
 import { Icon } from "../util/icon";
 import { tinaField } from "tinacms/dist/react";
 import { GlobalHeader } from "../../tina/__generated__/types";
-import { ImageType} from "../../tina/collection/global";
 
 
 
