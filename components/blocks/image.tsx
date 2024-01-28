@@ -3,14 +3,16 @@ import { useTheme } from "../layout";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { tinaField } from "tinacms/dist/react";
+import { TinaTemplate } from "tinacms";
+import { PageBlocksImage } from "../../tina/__generated__/types";
 
-export const ImageWithTextOverlay = ({ data }) => {
+export const Image = ({ data }: { data: PageBlocksImage }) => {
   const theme = useTheme();
 
   return (
     <Section color={data.color}>
       <Container
-        size="full"  // Update this to fit your layout requirements
+        size="full"
         className="relative flex items-center justify-center"
       >
         {data.image && (
@@ -21,7 +23,7 @@ export const ImageWithTextOverlay = ({ data }) => {
             <img
               className="w-full h-full object-cover"
               src={data.image.src}
-              alt={data.image.alt}
+              alt={data.image.alt || ""}
             />
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white">
               <div className="text-center">
@@ -33,6 +35,7 @@ export const ImageWithTextOverlay = ({ data }) => {
                     {data.headline}
                   </h2>
                 )}
+
                 {data.text && (
                   <p
                     data-tina-field={tinaField(data, "text")}
@@ -48,4 +51,48 @@ export const ImageWithTextOverlay = ({ data }) => {
       </Container>
     </Section>
   );
+};
+
+// Define your Tina Template
+export const imageBlockSchema: TinaTemplate = {
+  name: "image",
+  label: "Image with Text Overlay",
+  ui: {
+    // Add any UI configurations or previews here
+    previewSrc: "/path/to/preview-image.png",
+  },
+  fields: [
+    {
+      type: "string",
+      label: "Headline",
+      name: "headline",
+    },
+    {
+      label: "Text",
+      name: "text",
+      type: "rich-text",
+    },
+    {
+      type: "object",
+      label: "Image",
+      name: "image",
+      fields: [
+        {
+          name: "src",
+          label: "Image Source",
+          type: "image",
+        },
+        {
+          name: "alt",
+          label: "Alt Text",
+          type: "string",
+        },
+      ],
+    },
+    {
+      type: "string",
+      label: "Color",
+      name: "color",
+    },
+  ],
 };

@@ -53,6 +53,8 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
               </span>
             </h3>
           )}
+
+
           {data.text && (
             <div
               data-tina-field={tinaField(data, "text")}
@@ -63,6 +65,8 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
               <TinaMarkdown content={data.text} />
             </div>
           )}
+
+          
           {data.actions && (
             <Actions
               className="justify-center md:justify-start py-2"
