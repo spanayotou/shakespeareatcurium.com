@@ -8,7 +8,6 @@
     "image": "/uploads/Logo-removebg-preview.png",
     "color": "default"
   },
-
   "footer": {
     "color": "default",
     "social": {
@@ -19,7 +18,7 @@
   },
   "theme": {
     "color": "blue",
-    "font": "sans",
+    "font": "nunito",
     "darkMode": "system"
   }
 }
