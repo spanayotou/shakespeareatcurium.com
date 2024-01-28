@@ -133,8 +133,8 @@ const Global: Collection = {
               value: "sans",
             },
             {
-              label: "Bondi",
-              value: "bondi",
+              label: "Bodoni",
+              value: "bodoni",
             },
             {
               label: "Nunito",
