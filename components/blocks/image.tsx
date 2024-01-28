@@ -36,12 +36,12 @@ export const Image = ({ data }: { data: PageBlocksImage }) => {
                   </h2>
                 )}
 
-                {data.text && (
+                {data.quote && (
                   <p
-                    data-tina-field={tinaField(data, "text")}
+                    data-tina-field={tinaField(data, "quote")}
                     className="text-lg leading-relaxed"
                   >
-                    {data.text}
+                    {data.quote}
                   </p>
                 )}
               </div>
@@ -69,8 +69,8 @@ export const imageBlockSchema: TinaTemplate = {
     },
     {
       label: "Text",
-      name: "text",
-      type: "rich-text",
+      name: "quote",
+      type: "string",
     },
     {
       type: "object",
