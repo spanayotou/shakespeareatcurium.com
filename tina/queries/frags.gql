@@ -3,3 +3,18 @@ fragment LayoutQueryFragment on Query {
     ...GlobalParts
   }
 }
+
+
+fragment GlobalParts on GlobalHeader {
+  name
+  color
+  image {
+    src
+    alt
+  }
+  nav {
+    href
+    label
+  }
+  # Include other fields of GlobalHeader if necessary
+}
