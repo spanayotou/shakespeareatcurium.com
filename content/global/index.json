@@ -1,13 +1,9 @@
 {
-  "header": {
-    "icon": {
-      "color": "orange",
-      "style": "float"
+    "header": {
+      "name": "Shakespeare at Kourion",
+      "image": "/uploads/Logo-removebg-preview.png",  // Update with the correct image path
+      "color": "default"
     },
-    "name": "Shakespeare at Kourion",
-    "image": "/uploads/Logo-removebg-preview.png",
-    "color": "default"
-  },
   "footer": {
     "color": "default",
     "social": {
