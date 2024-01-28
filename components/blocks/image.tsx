@@ -96,5 +96,3 @@ export const imageWithTextOverlayBlockSchema: TinaTemplate = {
   ],
 };
 
-// Attach Tina Template to your component
-ImageWithTextOverlay.template = imageWithTextOverlayTemplate;
