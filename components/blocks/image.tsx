@@ -3,6 +3,7 @@ import { useTheme } from "../layout";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { tinaField } from "tinacms/dist/react";
+import { TinaTemplate } from "tinacms";
 
 export const ImageWithTextOverlay = ({ data }) => {
   const theme = useTheme();
@@ -49,3 +50,51 @@ export const ImageWithTextOverlay = ({ data }) => {
     </Section>
   );
 };
+
+// Define your Tina Template
+export const imageWithTextOverlayTemplate: TinaTemplate = {
+  name: "imageWithTextOverlay",
+  label: "Image with Text Overlay",
+  ui: {
+    // Add any UI configurations or previews here
+    previewSrc: "/path/to/preview-image.png",
+  },
+  fields: [
+    {
+      type: "string",
+      label: "Headline",
+      name: "headline",
+    },
+    {
+      label: "Text",
+      name: "text",
+      type: "string",
+    },
+    {
+      type: "object",
+      label: "Image",
+      name: "image",
+      fields: [
+        {
+          name: "src",
+          label: "Image Source",
+          type: "image",
+        },
+        {
+          name: "alt",
+          label: "Alt Text",
+          type: "string",
+        },
+      ],
+    },
+    {
+      type: "string",
+      label: "Color",
+      name: "color",
+      // Add color options if needed
+    },
+  ],
+};
+
+// Attach Tina Template to your component
+ImageWithTextOverlay.template = imageWithTextOverlayTemplate;
