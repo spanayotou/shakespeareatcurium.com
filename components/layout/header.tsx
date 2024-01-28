@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { Container } from "../util/container";
 import { useTheme } from ".";
 import { Icon } from "../util/icon";
+import Image from "next/image";
 import { tinaField } from "tinacms/dist/react";
 import { GlobalHeader } from "../../tina/__generated__/types";
 
@@ -67,19 +68,16 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
     >
       <Container size="custom" className="py-0 relative z-10 max-w-8xl">
         <div className="flex items-center justify-between gap-6">
-          <h4 className="select-none text-lg font-bold tracking-tight my-4 transition duration-150 ease-out transform">
+        <h4 className="select-none text-lg font-bold tracking-tight my-4 transition duration-150 ease-out transform">
             <Link
               href="/"
               className="flex gap-1 items-center whitespace-nowrap tracking-[.002em]"
             >
-              <Icon
-                tinaField={tinaField(data, "icon")}
-                parentColor={data.color}
-                data={{
-                  name: data.icon.name,
-                  color: data.icon.color,
-                  style: data.icon.style,
-                }}
+              {/* Replace the Icon component with an img tag */}
+              <img
+                src={data.image as string}  // Assuming data.image contains the path to the image
+                alt={data.name}   // You can provide an alt text for accessibility
+                className="w-8 h-8" // Set the width and height accordingly
               />
               <span data-tina-field={tinaField(data, "name")}>{data.name}</span>
             </Link>
