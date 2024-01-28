@@ -1,7 +1,7 @@
 {
     "header": {
       "name": "Shakespeare at Kourion",
-      "image": "/uploads/Logo-removebg-preview.png",  // Update with the correct image path
+      "image": "/uploads/Logo-removebg-preview.png",  
       "color": "default"
     },
   "footer": {
