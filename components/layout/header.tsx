@@ -77,7 +77,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
               <img
                 src={data.image as string}  // Assuming data.image contains the path to the image
                 alt={data.name}   // You can provide an alt text for accessibility
-                className="w-12 h-12" // Set the width and height accordingly
+                className="w-26 h-20" // Set the width and height accordingly
               />
               <span data-tina-field={tinaField(data, "name")}>{data.name}</span>
             </Link>
