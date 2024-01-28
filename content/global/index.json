@@ -5,8 +5,14 @@
       "style": "float"
     },
     "name": "Shakespeare at Kourion",
-    "image": "/uploads/Logo-removebg-preview.png",
-    "color": "default"
+    "image": "/uploads/E3C39799-9F60-4746-8F25-5379B2CF8CCF.JPG",
+    "color": "default",
+    "nav": [
+      {
+        "href": "home",
+        "label": "Home"
+      }
+    ]
   },
   "footer": {
     "color": "default",
