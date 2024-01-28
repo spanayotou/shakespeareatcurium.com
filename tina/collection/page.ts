@@ -46,7 +46,7 @@ const Page: Collection = {
         // @ts-ignore
         featureBlockSchema,
         contentBlockSchema,
-        imageWithTextOverlayBlockSchema,
+        // imageWithTextOverlayBlockSchema,
         testimonialBlockSchema,
       ],
     },
