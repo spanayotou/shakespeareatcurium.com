@@ -3,7 +3,7 @@ import { heroBlockSchema } from "../../components/blocks/hero";
 import { contentBlockSchema } from "../../components/blocks/content";
 import { testimonialBlockSchema } from "../../components/blocks/testimonial";
 import { featureBlockSchema } from "../../components/blocks/features";
-import { imageWithTextOverlayBlockSchema } from "../../components/blocks/image";
+import { imageBlockSchema } from "../../components/blocks/image";
 
 
 
@@ -46,7 +46,7 @@ const Page: Collection = {
         // @ts-ignore
         featureBlockSchema,
         contentBlockSchema,
-        imageWithTextOverlayBlockSchema,
+        imageBlockSchema,
         testimonialBlockSchema,
       ],
     },

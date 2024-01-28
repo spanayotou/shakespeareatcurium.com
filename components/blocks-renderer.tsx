@@ -33,7 +33,7 @@ const Block = (block: PageBlocks) => {
     case "PageBlocksTestimonial":
       return <Testimonial data={block} />;
     case "PageBlocksImage":
-      return <Testimonial data={block} />;
+      return <Image data={block} />;
     default:
       return null;
   }
