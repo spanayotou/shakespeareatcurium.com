@@ -4,6 +4,7 @@ export const Container = ({
   children,
   size = "medium",
   width = "large",
+  hasImage = false, // New prop to determine if an image is present
   className = "",
   ...props
 }) => {
@@ -21,9 +22,11 @@ export const Container = ({
     custom: "",
   };
 
+  const horizontalPadding = hasImage ? "px-0" : "px-6 sm:px-8"; // No horizontal padding if there is an image
+
   return (
     <div
-      className={`${widthClass[width]} mx-auto px-6 sm:px-8 ${verticalPadding[size]} ${className}`}
+      className={`${widthClass[width]} mx-auto ${horizontalPadding} ${verticalPadding[size]} ${className}`}
       {...props}
     >
       {children}
