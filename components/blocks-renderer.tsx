@@ -2,6 +2,7 @@ import type { Page, PageBlocks } from "../tina/__generated__/types";
 import { Content } from "./blocks/content";
 import { Features } from "./blocks/features";
 import { Hero } from "./blocks/hero";
+import { Image } from "./blocks/image";
 import { Testimonial } from "./blocks/testimonial";
 import { tinaField } from "tinacms/dist/react";
 
@@ -30,6 +31,8 @@ const Block = (block: PageBlocks) => {
     case "PageBlocksFeatures":
       return <Features data={block} />;
     case "PageBlocksTestimonial":
+      return <Testimonial data={block} />;
+    case "PageBlocksImage":
       return <Testimonial data={block} />;
     default:
       return null;

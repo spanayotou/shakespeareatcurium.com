@@ -4,8 +4,10 @@ import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { tinaField } from "tinacms/dist/react";
 import { TinaTemplate } from "tinacms";
+import { PageBlocksImage } from "../../tina/__generated__/types";
 
-export const ImageWithTextOverlay = ({ data }) => {
+
+export const Image = ({ data }: { data: PageBlocksImage }) => {
   const theme = useTheme();
 
   return (
@@ -52,7 +54,7 @@ export const ImageWithTextOverlay = ({ data }) => {
 };
 
 // Define your Tina Template
-export const imageWithTextOverlayBlockSchema: TinaTemplate = {
+export const imageBlockSchema: TinaTemplate = {
   name: "imageWithTextOverlay",
   label: "Image with Text Overlay",
   ui: {
