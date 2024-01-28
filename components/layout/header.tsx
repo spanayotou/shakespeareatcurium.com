@@ -10,6 +10,7 @@ import { GlobalHeader } from "../../tina/__generated__/types";
 
 
 export const Header = ({ data }: { data: GlobalHeader }) => {
+  console.log("Data prop in Header component:", data);
   const router = useRouter();
   const theme = useTheme();
 
