@@ -13,6 +13,7 @@ export const Image = ({ data }: { data: PageBlocksImage }) => {
     <Section color={data.color}>
       <Container
         size="full"
+        hasImage = {true}
         className="relative flex items-center justify-center px-0" // Remove horizontal padding
       >
         {data.image && (

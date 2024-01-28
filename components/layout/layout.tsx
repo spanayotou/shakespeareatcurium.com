@@ -40,6 +40,16 @@ export const Layout = ({
             />
           </>
         )}
+        {data.theme.font === "bodoni" && (
+          <>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap"
+              rel="stylesheet"
+            />
+          </>
+        )}
       </Head>
       <Theme data={data?.theme}>
         <div
