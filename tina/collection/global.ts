@@ -135,7 +135,7 @@ const Global: Collection = {
             {
               label: "Bondi",
               value: "bondi",
-            }
+            },
             {
               label: "Nunito",
               value: "nunito",
