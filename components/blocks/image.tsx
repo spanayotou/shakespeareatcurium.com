@@ -52,7 +52,7 @@ export const ImageWithTextOverlay = ({ data }) => {
 };
 
 // Define your Tina Template
-export const imageWithTextOverlayTemplate: TinaTemplate = {
+export const imageWithTextOverlayBlockSchema: TinaTemplate = {
   name: "imageWithTextOverlay",
   label: "Image with Text Overlay",
   ui: {
