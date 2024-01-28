@@ -13,7 +13,7 @@ export const Image = ({ data }: { data: PageBlocksImage }) => {
     <Section color={data.color}>
       <Container
         size="full"
-        className="relative flex items-center justify-center"
+        className="relative flex items-center justify-center px-0" // Remove horizontal padding
       >
         {data.image && (
           <div
@@ -39,7 +39,7 @@ export const Image = ({ data }: { data: PageBlocksImage }) => {
                 {data.quote && (
                   <p
                     data-tina-field={tinaField(data, "quote")}
-                    className="text-lg leading-relaxed"
+                    className="text-lg font-bold leading-relaxed my-2 black-outline text-white-500"  // Adjust the font size and other styles here
                   >
                     {data.quote}
                   </p>
