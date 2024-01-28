@@ -39,7 +39,7 @@ export const Image = ({ data }: { data: PageBlocksImage }) => {
                 {data.quote && (
                   <p
                     data-tina-field={tinaField(data, "quote")}
-                    className="text-lg font-bold leading-relaxed my-2 black-outline text-white-500"  // Adjust the font size and other styles here
+                    className="block opacity-15 text-8xl absolute inset-y-1/2 transform translate-y-3	-right-4 leading-4 -z-1"  // Adjust the font size and other styles here
                   >
                     {data.quote}
                   </p>

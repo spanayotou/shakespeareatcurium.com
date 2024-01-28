@@ -99,8 +99,10 @@ module.exports = {
         "-1": "-1",
       },
       fontFamily: {
+        bodoni: ['Bodoni', ...defaultTheme.fontFamily.sans],
         nunito: ["Nunito", ...defaultTheme.fontFamily.sans],
         lato: ["Lato", ...defaultTheme.fontFamily.sans],
+        
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -112,7 +114,7 @@ module.exports = {
             },
             code: {
               backgroundColor: theme("colors.gray.100"),
-              padding: "0.25rem",
+              padding: "0 rem",
               borderRadius: "3px",
               margin: "-0.25rem 1px",
             },
