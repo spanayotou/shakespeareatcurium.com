@@ -59,7 +59,7 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
                     {data.headline}
                   </h2>
                 )}
-
+  
                 {data.quote && (
                   <p
                     data-tina-field={tinaField(data, "quote")}
@@ -73,15 +73,24 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
           </div>
         )}
         {data.images && data.images.length > 1 && (
-          <div>
-            <button onClick={prevImage}>Previous</button>
-            <button onClick={nextImage}>Next</button>
+          <div className="flex items-center mt-4">
+            {data.images.map((_, index) => (
+              <div
+                key={index}
+                className={`w-4 h-4 mx-1 rounded-full ${index === currentImageIndex ? 'bg-black' : 'bg-gray-400'}`}
+              />
+            ))}
+          </div>
+        )}
+        {data.images && data.images.length > 1 && (
+          <div className="mt-4">
+            <button onClick={prevImage} className="bg-customBlue text-white px-4 py-2 rounded mr-2">Previous</button>
+            <button onClick={nextImage} className="bg-customBlue text-white px-4 py-2 rounded">Next</button>
           </div>
         )}
       </Container>
     </Section>
   );
-};
 
 
 export const scrollBlockSchema: TinaTemplate = {
