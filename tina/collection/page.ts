@@ -20,8 +20,10 @@ const Page: Collection = {
       if (document._sys.filename === "about") {
         return `/about`;
       }
+      if (document._sys.filename === "king-lear") {
+        return `/king_lear`;
+      }
       
-
       return undefined;
     },
   },
