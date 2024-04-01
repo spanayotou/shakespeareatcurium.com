@@ -7,9 +7,6 @@ blocks:
       - src: /uploads/Shakespeareatkourion (93).jpg
         alt: jkj;kjl
       - src: /uploads/ShakespeareTamingShrew (113).jpg
-    texts:
-      - headline: test
-      - headline: Hello
     _template: scroll
 ---
 
