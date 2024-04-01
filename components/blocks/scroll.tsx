@@ -89,42 +89,60 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
     </Section>
   );}
 
-export const scrollBlockSchema: TinaTemplate = {
-  name: "scroll",
-  label: "Scroll",
-  fields: [
-    {
-      type: "string",
-      label: "Headline",
-      name: "headline",
-    },
-    {
-      label: "Text",
-      name: "quote",
-      type: "string",
-    },
-    {
-      type: "object",
-      label: "Images",
-      name: "images",
-      list: true, // Indicates that this field is a list
-      fields: [
-        {
-          type: "image",
-          label: "Image Source",
-          name: "src",
-        },
-        {
-          type: "string",
-          label: "Alt Text",
-          name: "alt",
-        },
-      ],
-    },
-    {
-      type: "string",
-      label: "Color",
-      name: "color",
-    },
-  ],
-};
+  export const scrollBlockSchema: TinaTemplate = {
+    name: "scroll",
+    label: "Scroll",
+    fields: [
+      {
+        type: "string",
+        label: "Headline",
+        name: "headline",
+      },
+      {
+        label: "Text",
+        name: "quote",
+        type: "string",
+      },
+      {
+        type: "object",
+        label: "Images",
+        name: "images",
+        list: true, // Indicates that this field is a list
+        fields: [
+          {
+            type: "image",
+            label: "Image Source",
+            name: "src",
+          },
+          {
+            type: "string",
+            label: "Alt Text",
+            name: "alt",
+          },
+        ],
+      },
+      {
+        type: "string",
+        label: "Color",
+        name: "color",
+      },
+      {
+        type: "object",
+        label: "Texts",
+        name: "texts",
+        list: true,
+        fields: [
+          {
+            type: "string",
+            label: "Headline",
+            name: "headline",
+          },
+          {
+            type: "string",
+            label: "Quote",
+            name: "quote",
+          },
+        ],
+      },
+    ],
+  };
