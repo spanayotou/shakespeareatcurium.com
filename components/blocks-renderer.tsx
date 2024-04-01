@@ -38,6 +38,7 @@ const Block = (block: PageBlocks) => {
     case "PageBlocksScroll":
       return <Scroll data={block} />;
     default:
+      
       return null;
   }
 };
