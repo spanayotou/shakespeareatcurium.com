@@ -1,5 +1,5 @@
 ---
-title: king-lear
+title: king
 blocks:
   - body: ''
     _template: content
