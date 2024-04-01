@@ -32,7 +32,7 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
     }
   };
 
-  return (
+    return (
     <Section color={data.color}>
       <Container
         size="full"
@@ -59,7 +59,7 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
                     {data.headline}
                   </h2>
                 )}
-  
+
                 {data.quote && (
                   <p
                     data-tina-field={tinaField(data, "quote")}
@@ -90,7 +90,7 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
         )}
       </Container>
     </Section>
-  );
+    );}
 
 
 export const scrollBlockSchema: TinaTemplate = {
