@@ -4,6 +4,7 @@ import { contentBlockSchema } from "../../components/blocks/content";
 import { testimonialBlockSchema } from "../../components/blocks/testimonial";
 import { featureBlockSchema } from "../../components/blocks/features";
 import { imageBlockSchema } from "../../components/blocks/image";
+import { scrollBlockSchema } from "../../components/blocks/scroll";
 
 
 
@@ -48,6 +49,7 @@ const Page: Collection = {
         contentBlockSchema,
         imageBlockSchema,
         testimonialBlockSchema,
+        scrollBlockSchema
       ],
     },
   ],

@@ -6,7 +6,7 @@ import { tinaField } from "tinacms/dist/react";
 import { TinaTemplate } from "tinacms";
 import { PageBlocksScroll } from "../../tina/__generated__/types";
 
-export const Scroll = ({ data }: { data: PageBlocks }) => {
+export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
   const theme = useTheme();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -71,4 +71,45 @@ export const Scroll = ({ data }: { data: PageBlocks }) => {
       </Container>
     </Section>
   );
+};
+
+
+export const scrollBlockSchema: TinaTemplate = {
+  name: "scroll",
+  label: "Scroll",
+  fields: [
+    {
+      type: "string",
+      label: "Headline",
+      name: "headline",
+    },
+    {
+      label: "Text",
+      name: "quote",
+      type: "string",
+    },
+    {
+      type: "object",
+      label: "Images",
+      name: "images",
+      list: true, // Indicates that this field is a list
+      fields: [
+        {
+          type: "image",
+          label: "Image Source",
+          name: "src",
+        },
+        {
+          type: "string",
+          label: "Alt Text",
+          name: "alt",
+        },
+      ],
+    },
+    {
+      type: "string",
+      label: "Color",
+      name: "color",
+    },
+  ],
 };
