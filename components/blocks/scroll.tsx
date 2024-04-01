@@ -4,9 +4,9 @@ import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { tinaField } from "tinacms/dist/react";
 import { TinaTemplate } from "tinacms";
-import { PageBlocksImage } from "../../tina/__generated__/types";
+import { PageBlocksScroll } from "../../tina/__generated__/types";
 
-export const Image = ({ data }: { data: PageBlocksImage }) => {
+export const Scroll = ({ data }: { data: PageBlocks }) => {
   const theme = useTheme();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
