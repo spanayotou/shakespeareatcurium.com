@@ -1,9 +1,9 @@
 ---
 title: home
 blocks:
-  - headline: hellp
+  - headline: ''
     images:
-      - src: /uploads/ShakespeareTamingShrew (113).jpg
+      - src: /uploads/E3C39799-9F60-4746-8F25-5379B2CF8CCF.JPG
     _template: scroll
 ---
 
