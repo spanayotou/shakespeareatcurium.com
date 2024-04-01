@@ -50,25 +50,20 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
               alt={data.images[currentImageIndex].alt || ""}
             />
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white">
-              <div className="text-center">
-                {data.headline && (
-                  <h2
-                    data-tina-field={tinaField(data, "headline")}
-                    className="text-4xl font-extrabold leading-tight mb-4"
-                  >
-                    {data.headline}
-                  </h2>
-                )}
-  
-                {data.quote && (
-                  <p
-                    data-tina-field={tinaField(data, "quote")}
-                    className="block opacity-15 text-8xl absolute inset-y-1/2 transform translate-y-3	right-4 leading-4 -z-1"
-                  >
-                    {data.quote}
-                  </p>
-                )}
-              </div>
+              {data.texts && data.texts.length > 0 && (
+                <div className="text-center">
+                  {data.texts[currentImageIndex] && (
+                    <>
+                      <h2 className="text-4xl font-extrabold leading-tight mb-4">
+                        {data.texts[currentImageIndex].headline}
+                      </h2>
+                      <p className="block opacity-15 text-8xl">
+                        {data.texts[currentImageIndex].quote}
+                      </p>
+                    </>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -93,7 +88,6 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
       </Container>
     </Section>
   );}
-
 
 export const scrollBlockSchema: TinaTemplate = {
   name: "scroll",
