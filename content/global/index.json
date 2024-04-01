@@ -6,7 +6,17 @@
     },
     "name": "Shakespeare at Kourion",
     "image": "/uploads/Logo-removebg-preview.png",
-    "color": "default"
+    "color": "default",
+    "nav": [
+      {
+        "href": "home",
+        "label": "Home"
+      },
+      {
+        "href": "about",
+        "label": "About"
+      }
+    ]
   },
   "footer": {
     "color": "default",
