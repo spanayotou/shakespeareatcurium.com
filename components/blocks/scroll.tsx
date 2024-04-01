@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTheme } from "../layout";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
@@ -10,14 +10,24 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
   const theme = useTheme();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (data.images && data.images.length > 1) {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % data.images!.length);
+      }
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup the interval on component unmount
+  }, [data.images]); // Trigger effect when images change
+
   const nextImage = () => {
-    if (data.images && data.images.length > 0) {
+    if (data.images && data.images.length > 1) {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % data.images!.length);
     }
   };
 
   const prevImage = () => {
-    if (data.images && data.images.length > 0) {
+    if (data.images && data.images.length > 1) {
       setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? data.images!.length - 1 : prevIndex - 1));
     }
   };
