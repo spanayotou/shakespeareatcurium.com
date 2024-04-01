@@ -1,5 +1,5 @@
 ---
-title: Tina Cloud Starter
+title: home
 blocks:
   - headline: hellp
     images:
