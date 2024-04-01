@@ -3,9 +3,10 @@ title: home
 blocks:
   - headline: hellp
     images:
-      - src: /uploads/IMG_8741.JPG
+      - src: /uploads/Tempest (22).jpg
+      - src: /uploads/Shakespeareatkourion (93).jpg
         alt: jkj;kjl
-      - src: /uploads/E3C39799-9F60-4746-8F25-5379B2CF8CCF.JPG
+      - src: /uploads/ShakespeareTamingShrew (113).jpg
     texts:
       - headline: test
       - headline: Hello
