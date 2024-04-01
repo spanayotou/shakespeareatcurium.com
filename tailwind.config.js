@@ -1,4 +1,3 @@
-const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
@@ -9,50 +8,55 @@ module.exports = {
     colors: {
       transparent: "transparent",
       current: "currentColor",
-      black: colors.black,
-      white: colors.white,
-      teal: colors.cyan,
-      green: colors.emerald,
-      red: colors.rose,
-      purple: colors.purple,
-      pink: colors.pink,
-      yellow: colors.yellow,
-      gray: {
-        50: "#F6F6F9",
-        100: "#EDECF3",
-        150: "#E6E3EF",
-        200: "#E1DDEC",
-        250: "#C9C5D5",
-        300: "#b2adbe",
-        400: "#918c9e",
-        500: "#716c7f",
-        600: "#565165",
-        700: "#433e52",
-        800: "#363145",
-        900: "#252336",
-        1000: "#1c1b2e",
-      },
+      black: "#000",
+      white: "#fff",
       blue: {
-        50: "#DCEEFF",
-        100: "#B4DBFF",
-        200: "#85C5FE",
-        300: "#4EABFE",
-        400: "#2296fe",
-        500: "#0084FF",
-        600: "#0574e4",
-        700: "#0D5DBD",
-        800: "#144696",
-        900: "#1D2C6C",
-        1000: "#241748",
+        50: "#e8f4f8",
+        100: "#d1e9f1",
+        200: "#a3cee4",
+        300: "#75b2d8",
+        400: "#4897cb",
+        500: "#1a7bbf",
+        600: "#1561a0",
+        700: "#104780",
+        800: "#0b2d60",
+        900: "#051340",
       },
-      orange: {
-        200: "#EB7752",
-        300: "#EA6C45",
-        400: "#E85C30",
-        500: "#EC4815",
-        600: "#DC4419",
-        700: "#D04017",
-        800: "#C1360F",
+      purple: {
+        50: "#f3eff9",
+        100: "#e7dff3",
+        200: "#c2b6db",
+        300: "#9d8dbf",
+        400: "#7856a3",
+        500: "#532e87",
+        600: "#42256e",
+        700: "#311c54",
+        800: "#21133a",
+        900: "#10091f",
+      },
+      gold: {
+        50: "#fdf8e8",
+        100: "#faf1d1",
+        200: "#f4dd9e",
+        300: "#eec96b",
+        400: "#e7b438",
+        500: "#e1a005",
+        600: "#b78504",
+        700: "#876003",
+        800: "#584002",
+        900: "#2a2001",
+      },
+      gray: {
+        50: "#f6f6f9",
+        100: "#e1e1e6",
+        200: "#c9c9d1",
+        300: "#b2b2bd",
+        400: "#9c9ca9",
+        500: "#85859a",
+        600: "#6d6d85",
+        700: "#565670",
+        800: "#3e3e5b",
+        900: "#272742",
       },
     },
     screens: {
@@ -63,169 +67,59 @@ module.exports = {
       "2xl": "1800px",
     },
     fontSize: {
-      xs: ".875rem",
-      sm: "1rem",
-      base: "1.125rem",
-      lg: "1.25rem",
-      xl: "1.5rem",
-      "2xl": "1.75rem",
-      "3xl": "2rem",
-      "4xl": "2.5rem",
-      "5xl": "3.25rem",
+      xs: ".75rem",
+      sm: ".875rem",
+      base: "1rem",
+      lg: "1.125rem",
+      xl: "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.25rem",
+      "5xl": "3rem",
       "6xl": "4rem",
-      "7xl": "5rem",
-      "8xl": "6rem",
     },
-    borderWidth: {
-      DEFAULT: "3px",
-      0: "0",
-      2: "2px",
-      3: "3px",
-      4: "4px",
+    fontFamily: {
+      sans: ["Nunito", ...defaultTheme.fontFamily.sans],
+      serif: ["Bodoni", ...defaultTheme.fontFamily.serif],
+      lato: ["Lato", ...defaultTheme.fontFamily.sans],
     },
     extend: {
-      textDecoration: ["active"],
-      opacity: {
-        7: ".075",
-        15: ".15",
-      },
-      maxWidth: {
-        "8xl": "86rem",
-      },
       spacing: {
         128: "32rem",
       },
-      zIndex: {
-        "-1": "-1",
-      },
-      fontFamily: {
-        bodoni: ['Bodoni', ...defaultTheme.fontFamily.sans],
-        nunito: ["Nunito", ...defaultTheme.fontFamily.sans],
-        lato: ["Lato", ...defaultTheme.fontFamily.sans],
-        
+      borderWidth: {
+        3: "3px",
       },
       typography: (theme) => ({
         DEFAULT: {
           css: {
-            pre: {
-              color: theme("colors.gray.700"),
-              backgroundColor: theme("colors.gray.100"),
-              lineHeight: 1.5,
-            },
-            code: {
-              backgroundColor: theme("colors.gray.100"),
-              padding: "0 rem",
-              borderRadius: "3px",
-              margin: "-0.25rem 1px",
-            },
-            "code::before": {
-              content: '""',
-            },
-            "code::after": {
-              content: '""',
-            },
-            "p:first-of-type": {
-              fontSize: "1.125rem",
-            },
-          },
-        },
-        tint: {
-          css: {
-            pre: {
-              color: theme("colors.gray.800"),
-              backgroundColor: theme("colors.gray.150"),
-            },
-          },
-        },
-        lg: {
-          css: {
-            pre: {
-              lineHeight: 1.5,
-            },
-            "p:first-of-type": {
-              fontSize: "1.365rem",
-            },
-          },
-        },
-        xl: {
-          css: {
-            pre: {
-              lineHeight: 1.5,
-            },
-            "p:first-of-type": {
-              fontSize: "1.365rem",
+            color: theme("colors.gray.800"),
+            a: {
+              color: theme("colors.blue.500"),
+              "&:hover": {
+                color: theme("colors.blue.600"),
+              },
             },
           },
         },
         dark: {
           css: {
             color: theme("colors.gray.200"),
-            '[class~="lead"]': { color: theme("colors.gray.400") },
-            a: { color: theme("colors.gray.100") },
-            strong: { color: theme("colors.gray.100") },
-            "ul > li::before": { backgroundColor: theme("colors.gray.700") },
-            hr: { borderColor: theme("colors.gray.800") },
-            blockquote: {
-              color: theme("colors.gray.100"),
-              borderLeftColor: theme("colors.gray.800"),
+            a: {
+              color: theme("colors.gray.400"),
+              "&:hover": {
+                color: theme("colors.gray.300"),
+              },
             },
-            h1: { color: theme("colors.gray.100") },
-            h2: { color: theme("colors.gray.100") },
-            h3: { color: theme("colors.gray.100") },
-            h4: { color: theme("colors.gray.100") },
-            code: {
-              color: theme("colors.gray.100"),
-              backgroundColor: theme("colors.gray.1000"),
-            },
-            "a code": { color: theme("colors.gray.100") },
-            pre: {
-              color: theme("colors.gray.200"),
-              backgroundColor: theme("colors.gray.900"),
-            },
-            thead: {
-              color: theme("colors.gray.100"),
-              borderBottomColor: theme("colors.gray.700"),
-            },
-            "tbody tr": { borderBottomColor: theme("colors.gray.800") },
-          },
-        },
-        primary: {
-          css: {
-            color: theme("colors.gray.50"),
-            '[class~="lead"]': { color: theme("colors.gray.400") },
-            a: { color: theme("colors.gray.100") },
-            strong: { color: theme("colors.gray.100") },
-            "ul > li::before": { backgroundColor: theme("colors.gray.700") },
-            hr: { borderColor: theme("colors.gray.800") },
-            blockquote: {
-              color: theme("colors.gray.100"),
-              borderLeftColor: theme("colors.gray.800"),
-            },
-            h1: { color: theme("colors.gray.100") },
-            h2: { color: theme("colors.gray.100") },
-            h3: { color: theme("colors.gray.100") },
-            h4: { color: theme("colors.gray.100") },
-            code: {
-              color: theme("colors.gray.100"),
-              backgroundColor: "rgba(0,0,0,0.15)",
-            },
-            "a code": { color: theme("colors.gray.100") },
-            pre: {
-              color: theme("colors.gray.200"),
-              backgroundColor: "rgba(0,0,0,0.15)",
-            },
-            thead: {
-              color: theme("colors.gray.100"),
-              borderBottomColor: theme("colors.gray.700"),
-            },
-            "tbody tr": { borderBottomColor: theme("colors.gray.800") },
           },
         },
       }),
     },
   },
   variants: {
-    extend: { typography: ["tint", "dark", "primary"] },
+    extend: {
+      typography: ["dark"],
+    },
   },
   plugins: [require("@tailwindcss/typography")],
 };
