@@ -11,11 +11,15 @@ export const Image = ({ data }: { data: PageBlocksImage }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % (data.image?.length || 0));
+    if (data.images && data.images.length > 0) {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % data.images!.length);
+    }
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? (data.image?.length || 0) - 1 : prevIndex - 1));
+    if (data.images && data.images.length > 0) {
+      setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? data.images!.length - 1 : prevIndex - 1));
+    }
   };
 
   return (
@@ -25,15 +29,15 @@ export const Image = ({ data }: { data: PageBlocksImage }) => {
         hasImage={true}
         className="relative flex items-center justify-center px-0"
       >
-        {data.image && (
+        {data.images && data.images.length > 0 && (
           <div
-            data-tina-field={tinaField(data, "image")}
+            data-tina-field={tinaField(data.images[currentImageIndex], "src")}
             className="relative w-full h-full"
           >
             <img
               className="w-full h-full object-cover"
-              src={data.image[currentImageIndex]?.src || ""}
-              alt={data.image[currentImageIndex]?.alt || ""}
+              src={data.images[currentImageIndex].src || ""}
+              alt={data.images[currentImageIndex].alt || ""}
             />
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white">
               <div className="text-center">
@@ -58,7 +62,7 @@ export const Image = ({ data }: { data: PageBlocksImage }) => {
             </div>
           </div>
         )}
-        {data.image?.length > 1 && (
+        {data.images && data.images.length > 1 && (
           <div>
             <button onClick={prevImage}>Previous</button>
             <button onClick={nextImage}>Next</button>
@@ -67,48 +71,4 @@ export const Image = ({ data }: { data: PageBlocksImage }) => {
       </Container>
     </Section>
   );
-};
-
-// Define your Tina Template
-export const imageBlockSchema: TinaTemplate = {
-  name: "image",
-  label: "Image with Text Overlay",
-  ui: {
-    // Add any UI configurations or previews here
-    previewSrc: "/path/to/preview-image.png",
-  },
-  fields: [
-    {
-      type: "string",
-      label: "Headline",
-      name: "headline",
-    },
-    {
-      label: "Text",
-      name: "quote",
-      type: "string",
-    },
-    {
-      type: "object",
-      label: "Image",
-      name: "image",
-      fields: [
-        {
-          name: "src",
-          label: "Image Source",
-          type: "image",
-        },
-        {
-          name: "alt",
-          label: "Alt Text",
-          type: "string",
-        },
-      ],
-    },
-    {
-      type: "string",
-      label: "Color",
-      name: "color",
-    },
-  ],
 };
