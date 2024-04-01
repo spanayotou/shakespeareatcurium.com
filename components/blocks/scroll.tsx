@@ -32,40 +32,6 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
     }
   };
 
-  import React, { useState, useEffect } from "react";
-import { useTheme } from "../layout";
-import { Container } from "../util/container";
-import { Section } from "../util/section";
-import { tinaField } from "tinacms/dist/react";
-import { TinaTemplate } from "tinacms";
-import { PageBlocksScroll } from "../../tina/__generated__/types";
-
-export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
-  const theme = useTheme();
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (data.images && data.images.length > 1) {
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % data.images!.length);
-      }
-    }, 5000); // Change image every 5 seconds
-
-    return () => clearInterval(interval); // Cleanup the interval on component unmount
-  }, [data.images]); // Trigger effect when images change
-
-  const nextImage = () => {
-    if (data.images && data.images.length > 1) {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % data.images!.length);
-    }
-  };
-
-  const prevImage = () => {
-    if (data.images && data.images.length > 1) {
-      setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? data.images!.length - 1 : prevIndex - 1));
-    }
-  };
-
   return (
     <Section color={data.color}>
       <Container
