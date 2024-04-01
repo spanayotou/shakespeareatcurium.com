@@ -1,5 +1,5 @@
 ---
-title: Tina Cloud Starter
+title: Homepage
 blocks:
   - headline: Shakespeare at Kourion
     quote: >-
