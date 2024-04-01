@@ -1,12 +1,9 @@
 ---
 title: Tina Cloud Starter
 blocks:
-  - body: ''
-    color: tint
-    _template: content
-  - body: |
-      # New website coming soon...
-    color: tint
-    _template: content
+  - images:
+      - src: /uploads/IMG_8741.JPG
+      - src: /uploads/E3C39799-9F60-4746-8F25-5379B2CF8CCF.JPG
+    _template: scroll
 ---
 
