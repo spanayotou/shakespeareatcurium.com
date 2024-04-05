@@ -1,4 +1,4 @@
----
+
 title: home
 blocks:
   - headline: ''
@@ -7,5 +7,5 @@ blocks:
       - src: /uploads/king_lear.png
       - src: /uploads/shrew_group_pic.jpg
     _template: scroll
----
+
 
