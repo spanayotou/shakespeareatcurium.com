@@ -6,14 +6,28 @@
     },
     "name": "Shakespeare at Kourion",
     "image": "/uploads/Logo-removebg-preview.png",
-    "color": "default"
+    "color": "default",
+    "nav": [
+      {
+        "href": "home",
+        "label": "Home"
+      },
+      {
+        "href": "king-lear",
+        "label": "King Lear 2024"
+      },
+      {
+        "href": "about",
+        "label": "About"
+      }
+    ]
   },
   "footer": {
     "color": "default",
     "social": {
-      "facebook": "",
+      "facebook": "https://www.facebook.com/groups/shakespeareatcurium/",
       "twitter": "",
-      "instagram": ""
+      "instagram": "https://www.instagram.com/shakespeareatcurium/"
     }
   },
   "theme": {
