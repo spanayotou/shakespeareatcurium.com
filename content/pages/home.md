@@ -2,7 +2,7 @@
 title: home
 blocks:
   - images:
-      - src: /uploads/King Lear.png
+      - src: /uploads/king_lear.png
     _template: scroll
 ---
 
