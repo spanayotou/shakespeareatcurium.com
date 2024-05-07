@@ -5,7 +5,7 @@ blocks:
       src: /uploads/King Lear (1).png
     _template: image
   - tagline: ''
-    headline: ''
+    headline: 'Playing June 20, 21, 22'
     text: >
       Join us for a gripping portrayal of King Lear, Shakespeare's timeless
       tragedy of power, betrayal, and redemption. Follow the aging monarch as he
@@ -16,6 +16,8 @@ blocks:
         type: button
         icon: true
         link: /
+    image:
+      src: /uploads/On Sale.png
     _template: hero
 ---
 
