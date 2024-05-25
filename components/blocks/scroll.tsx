@@ -9,6 +9,7 @@ import { PageBlocksScroll } from "../../tina/__generated__/types";
 export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
   const theme = useTheme();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const isMobile = useMobileCheck(); // Custom hook to check if it's a mobile device
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,7 +41,7 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
             data-tina-field={tinaField(data.images[currentImageIndex], "src")}
             className="relative w-full h-full bg-cover bg-center"
             style={{
-              backgroundImage: `url(${data.images[currentImageIndex].src || ""})`,
+              backgroundImage: `url(${isMobile ? (data.images[currentImageIndex].mobileSrc || "") : (data.images[currentImageIndex].src || "")})`,
             }}
           >
             <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white">
@@ -110,6 +111,11 @@ export const scrollBlockSchema: TinaTemplate = {
           label: "Alt Text",
           name: "alt",
         },
+        {
+          type: "image",
+          label: "Mobile Image Source",
+          name: "mobileSrc", // Assuming you have a field for mobile images
+        },
       ],
     },
     {
@@ -137,3 +143,21 @@ export const scrollBlockSchema: TinaTemplate = {
     },
   ],
 };
+
+// Custom hook to check if it's a mobile device
+function useMobileCheck() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768); // Adjust threshold as needed
+    };
+
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  return isMobile;
+}
