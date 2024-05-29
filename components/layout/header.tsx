@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Container } from "../util/container";
 import { useTheme } from ".";
-import { Icon } from "../util/icon";
-import Image from "next/image";
 import { tinaField } from "tinacms/dist/react";
 import { GlobalHeader } from "../../tina/__generated__/types";
 
 export const Header = ({ data }: { data: GlobalHeader }) => {
   const router = useRouter();
   const theme = useTheme();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const headerColor = {
     default:
@@ -57,8 +56,9 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
     orange: "text-orange-500",
     yellow: "text-yellow-500",
   };
-  const [isClient, setIsClient] = React.useState(false);
-  React.useEffect(() => {
+
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
     setIsClient(true);
   }, []);
 
@@ -68,21 +68,34 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
     >
       <Container size="custom" className="py-0 relative z-10 max-w-8xl">
         <div className="flex items-center justify-between gap-6">
-        <h4 className="select-none text-lg font-bold tracking-tight my-4 transition duration-150 ease-out transform">
+          <h4 className="select-none text-lg font-bold tracking-tight my-4 transition duration-150 ease-out transform">
             <Link
               href="/"
               className="flex gap-1 items-center whitespace-nowrap tracking-[.002em]"
             >
-              {/* Replace the Icon component with an img tag */}
               <img
-                src={data.image as string}  // Assuming data.image contains the path to the image
-                alt={data.name}   // You can provide an alt text for accessibility
-                className="w-26 h-20" // Set the width and height accordingly
+                src={data.image as string}
+                alt={data.name}
+                className="w-26 h-20"
               />
-              <span data-tina-field={tinaField(data, "name")}>{data.name}</span>
+              <span data-tina-field={tinaField(data, "name")}>
+                {data.name}
+              </span>
             </Link>
           </h4>
-          <ul className="flex gap-6 sm:gap-8 lg:gap-10 tracking-[.002em] -mx-4">
+          <div className="lg:hidden">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-xl focus:outline-none"
+            >
+              {menuOpen ? "✕" : "☰"}
+            </button>
+          </div>
+          <ul
+            className={`lg:flex gap-6 sm:gap-8 lg:gap-10 tracking-[.002em] -mx-4 ${
+              menuOpen ? "block" : "hidden"
+            } lg:block`}
+          >
             {data.nav &&
               data.nav.map((item, i) => {
                 const activeItem =
@@ -99,7 +112,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
                     <Link
                       data-tina-field={tinaField(item, "label")}
                       href={`/${item.href}`}
-                      className={`relative select-none	text-base inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-8 px-4 ${
+                      className={`relative select-none text-base inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-8 px-4 ${
                         activeItem ? `` : `opacity-70`
                       }`}
                     >
