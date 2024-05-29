@@ -6,7 +6,7 @@ import { tinaField } from "tinacms/dist/react";
 import { GlobalHeader } from "../../tina/__generated__/types";
 import { useTheme } from "../layout";
 
-export const Header = ({ data }: { data: GlobalHeader }) => {
+const Header = ({ data }: { data: GlobalHeader }) => {
   const router = useRouter();
   const theme = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
