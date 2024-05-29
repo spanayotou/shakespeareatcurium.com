@@ -5,6 +5,7 @@ import { Section } from "../util/section";
 import { tinaField } from "tinacms/dist/react";
 import { TinaTemplate } from "tinacms";
 import { PageBlocksScroll } from "../../tina/__generated__/types";
+import { isMobile as isMobileDevice } from "react-device-detect";
 
 export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
   const theme = useTheme();
