@@ -4,11 +4,11 @@ import { useRouter } from "next/router";
 import { Container } from "../util/container";
 import { tinaField } from "tinacms/dist/react";
 import { GlobalHeader } from "../../tina/__generated__/types";
-import { useTheme } from "../layout"; // Import the useTheme hook from your layout file
+import { useTheme } from "../layout";
 
 export const Header = ({ data }: { data: GlobalHeader }) => {
   const router = useRouter();
-  const theme = useTheme(); // Access the theme using the useTheme hook
+  const theme = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const headerColor = {
@@ -32,14 +32,13 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
   const isClient = typeof window !== 'undefined';
 
   const handleNavigation = (href: string) => {
-    setMenuOpen(false); // Close the menu on navigation
+    setMenuOpen(false);
     router.push(href);
   };
 
   return (
     <div className={`relative overflow-hidden bg-gradient-to-b ${headerColorCss}`} style={{ height: '80px' }}>
       <Container size="custom" className="py-0 relative z-10 max-w-8xl" style={{ position: 'relative' }}>
-        {/* Header Content */}
         <div className="flex items-center justify-between gap-6" style={{ height: '100%' }}>
           <h4 className="select-none text-lg font-bold tracking-tight my-4 transition duration-150 ease-out transform">
             <Link href="/" className="flex gap-1 items-center whitespace-nowrap tracking-[.002em]">
@@ -61,12 +60,10 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
           </div>
         </div>
 
-        {/* Expanded Menu */}
         <ul className={`absolute top-full lg:relative lg:top-auto lg:left-auto lg:w-auto lg:flex gap-6 sm:gap-8 lg:gap-10 tracking-[.002em] -mx-4 ${menuOpen ? 'block' : 'hidden'}`} style={{ zIndex: 999, position: 'absolute', top: '100%', left: 0, width: '100%', backgroundColor: 'white' }}>
           {data.nav &&
             data.nav.map((item, i) => {
-              const activeItem =
-                (item.href === "" ? router.asPath === "/" : router.asPath.includes(item.href)) && isClient;
+              const activeItem = (item.href === "" ? router.asPath === "/" : router.asPath.includes(item.href)) && isClient;
               return (
                 <li
                   key={`${item.label}-${i}`}
@@ -123,7 +120,6 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
             })}
         </ul>
 
-        {/* Background Overlay */}
         {menuOpen && <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50" onClick={() => setMenuOpen(false)} />}
       </Container>
     </div>
