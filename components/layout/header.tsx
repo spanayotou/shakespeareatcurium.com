@@ -138,7 +138,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
                   return (
                     <li key={`${item.label}-${i}`} className={`${activeItem ? activeItemClasses[theme.color] : ""}`}>
                       <Link
-                        data-tina-field={tinaField(item, "label
+                        data-tina-field={tinaField(item, "label"
                       )}
                       href={`/${item.href}`}
                       className={`relative select-none text-base inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-2 px-4 ${activeItem ? `` : `opacity-70`}`}
