@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Container } from "../util/container";
@@ -12,7 +12,8 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const headerColor = {
-    default: "text-black dark:text-white from-gray-50 to-white dark:from-gray-800 dark:to-gray-900",
+    default:
+      "text-black dark:text-white from-gray-50 to-white dark:from-gray-800 dark:to-gray-900",
     primary: {
       blue: "text-white from-blue-300 to-blue-500",
       teal: "text-white from-teal-400 to-teal-500",
@@ -25,7 +26,8 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
     },
   };
 
-  const headerColorCss = data.color === "primary" ? headerColor.primary[theme.color] : headerColor.default;
+  const headerColorCss =
+    data.color === "primary" ? headerColor.primary[theme.color] : headerColor.default;
 
   const activeItemClasses = {
     blue: "border-b-3 border-blue-200 text-blue-700 dark:text-blue-300 font-medium dark:border-blue-700",
@@ -49,10 +51,10 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
     yellow: "text-yellow-500",
   };
 
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const handleNavigation = (href: string) => {
+    setMenuOpen(false); // Close the menu on navigation
+    router.push(href);
+  };
 
   return (
     <div className={`relative overflow-hidden bg-gradient-to-b ${headerColorCss}`}>
@@ -76,21 +78,30 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
               {menuOpen ? "✕" : "☰"}
             </button>
           </div>
-          <ul className={`hidden lg:flex gap-6 sm:gap-8 lg:gap-10 tracking-[.002em] -mx-4`}>
+          <ul className={`lg:flex gap-6 sm:gap-8 lg:gap-10 tracking-[.002em] -mx-4 ${menuOpen ? 'block' : 'hidden'}`}>
             {data.nav &&
               data.nav.map((item, i) => {
-                const activeItem = (item.href === "" ? router.asPath === "/" : router.asPath.includes(item.href)) && isClient;
+                const activeItem =
+                  (item.href === "" ? router.asPath === "/" : router.asPath.includes(item.href)) && isClient;
                 return (
-                  <li key={`${item.label}-${i}`} className={`${activeItem ? activeItemClasses[theme.color] : ""}`}>
+                  <li
+                    key={`${item.label}-${i}`}
+                    className={`${activeItem ? activeItemClasses[theme.color] : ""}`}
+                  >
                     <Link
                       data-tina-field={tinaField(item, "label")}
                       href={`/${item.href}`}
-                      className={`relative select-none text-base inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-8 px-4 ${activeItem ? `` : `opacity-70`}`}
+                      className={`relative select-none text-base inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-8 px-4 ${
+                        activeItem ? `` : `opacity-70`
+                      }`}
+                      onClick={() => handleNavigation(`/${item.href}`)}
                     >
                       {item.label}
                       {activeItem && (
                         <svg
-                          className={`absolute bottom-0 left-1/2 w-[180%] h-full -translate-x-1/2 -z-1 opacity-10 dark:opacity-15 ${activeBackgroundClasses[theme.color]}`}
+                          className={`absolute bottom-0 left-1/2 w-[180%] h-full -translate-x-1/2 -z-1 opacity-10 dark:opacity-15 ${
+                            activeBackgroundClasses[theme.color]
+                          }`}
                           preserveAspectRatio="none"
                           viewBox="0 0 230 230"
                           fill="none"
@@ -129,69 +140,12 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
               })}
           </ul>
         </div>
-        {menuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-white dark:bg-gray-800 shadow-lg z-20">
-            <ul className="flex flex-col gap-4 p-4">
-              {data.nav &&
-                data.nav.map((item, i) => {
-                  const activeItem = (item.href === "" ? router.asPath === "/" : router.asPath.includes(item.href)) && isClient;
-                  return (
-                    <li key={`${item.label}-${i}`} className={`${activeItem ? activeItemClasses[theme.color] : ""}`}>
-                      <Link
-                        data-tina-field={tinaField(item, "label"
-                      )}
-                      href={`/${item.href}`}
-                      className={`relative select-none text-base inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-2 px-4 ${activeItem ? `` : `opacity-70`}`}
-                    >
-                      {item.label}
-                      {activeItem && (
-                        <svg
-                          className={`absolute bottom-0 left-1/2 w-[180%] h-full -translate-x-1/2 -z-1 opacity-10 dark:opacity-15 ${activeBackgroundClasses[theme.color]}`}
-                          preserveAspectRatio="none"
-                          viewBox="0 0 230 230"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <rect
-                            x="230"
-                            y="230"
-                            width="230"
-                            height="230"
-                            transform="rotate(-180 230 230)"
-                            fill="url(#paint0_radial_1_33)"
-                          />
-                          <defs>
-                            <radialGradient
-                              id="paint0_radial_1_33"
-                              cx="0"
-                              cy="0"
-                              r="1"
-                              gradientUnits="userSpaceOnUse"
-                              gradientTransform="translate(345 230) rotate(90) scale(230 115)"
-                            >
-                              <stop stopColor="currentColor" />
-                              <stop
-                                offset="1"
-                                stopColor="currentColor"
-                                stopOpacity="0"
-                              />
-                            </radialGradient>
-                          </defs>
-                        </svg>
-                      )}
-                    </Link>
-                  </li>
-                );
-              })}
-          </ul>
-        </div>
-      )}
-      <div
-        className={`absolute h-1 bg-gradient-to-r from-transparent ${
-          data.color === "primary" ? `via-white` : `via-black dark:via-white`
-        } to-transparent bottom-0 left-4 right-4 -z-1 opacity-5`}
-      />
-    </Container>
-  </div>
-);
+        <div
+          className={`absolute h-1 bg-gradient-to-r from-transparent ${
+            data.color === "primary" ? `via-white` : `via-black dark:via-white`
+          } to-transparent bottom-0 left-4 right-4 -z-1 opacity-5`}
+        />
+      </Container>
+    </div>
+  );
 };
