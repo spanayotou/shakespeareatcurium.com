@@ -4,9 +4,11 @@ import { useRouter } from "next/router";
 import { Container } from "../util/container";
 import { tinaField } from "tinacms/dist/react";
 import { GlobalHeader } from "../../tina/__generated__/types";
+import { useTheme } from "../layout"; // Import the useTheme hook from your layout file
 
 export const Header = ({ data }: { data: GlobalHeader }) => {
   const router = useRouter();
+  const theme = useTheme(); // Access the theme using the useTheme hook
   const [menuOpen, setMenuOpen] = useState(false);
 
   const headerColor = {
