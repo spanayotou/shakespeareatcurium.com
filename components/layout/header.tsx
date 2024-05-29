@@ -129,3 +129,69 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
               })}
           </ul>
         </div>
+        {menuOpen && (
+          <div className="absolute top-full left-0 right-0 bg-white dark:bg-gray-800 shadow-lg z-20">
+            <ul className="flex flex-col gap-4 p-4">
+              {data.nav &&
+                data.nav.map((item, i) => {
+                  const activeItem = (item.href === "" ? router.asPath === "/" : router.asPath.includes(item.href)) && isClient;
+                  return (
+                    <li key={`${item.label}-${i}`} className={`${activeItem ? activeItemClasses[theme.color] : ""}`}>
+                      <Link
+                        data-tina-field={tinaField(item, "label
+                      )}
+                      href={`/${item.href}`}
+                      className={`relative select-none text-base inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-2 px-4 ${activeItem ? `` : `opacity-70`}`}
+                    >
+                      {item.label}
+                      {activeItem && (
+                        <svg
+                          className={`absolute bottom-0 left-1/2 w-[180%] h-full -translate-x-1/2 -z-1 opacity-10 dark:opacity-15 ${activeBackgroundClasses[theme.color]}`}
+                          preserveAspectRatio="none"
+                          viewBox="0 0 230 230"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            x="230"
+                            y="230"
+                            width="230"
+                            height="230"
+                            transform="rotate(-180 230 230)"
+                            fill="url(#paint0_radial_1_33)"
+                          />
+                          <defs>
+                            <radialGradient
+                              id="paint0_radial_1_33"
+                              cx="0"
+                              cy="0"
+                              r="1"
+                              gradientUnits="userSpaceOnUse"
+                              gradientTransform="translate(345 230) rotate(90) scale(230 115)"
+                            >
+                              <stop stopColor="currentColor" />
+                              <stop
+                                offset="1"
+                                stopColor="currentColor"
+                                stopOpacity="0"
+                              />
+                            </radialGradient>
+                          </defs>
+                        </svg>
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
+          </ul>
+        </div>
+      )}
+      <div
+        className={`absolute h-1 bg-gradient-to-r from-transparent ${
+          data.color === "primary" ? `via-white` : `via-black dark:via-white`
+        } to-transparent bottom-0 left-4 right-4 -z-1 opacity-5`}
+      />
+    </Container>
+  </div>
+);
+};
