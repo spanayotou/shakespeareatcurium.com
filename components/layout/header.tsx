@@ -130,7 +130,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
           </ul>
         </div>
         {menuOpen && (
-          <div className="absolute top-16 left-0 right-0 bg-white dark:bg-gray-800 shadow-lg z-20">
+          <div className="lg:hidden absolute top-16 left-0 right-0 bg-white dark:bg-gray-800 shadow-lg z-20">
             <ul className="flex flex-col gap-4 p-4">
               {data.nav &&
                 data.nav.map((item, i) => {
