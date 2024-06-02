@@ -76,61 +76,9 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
               {menuOpen ? "✕" : "☰"}
             </button>
           </div>
-          <ul className={`hidden lg:flex gap-6 sm:gap-8 lg:gap-10 tracking-[.002em] -mx-4`}>
-            {data.nav &&
-              data.nav.map((item, i) => {
-                const activeItem = (item.href === "" ? router.asPath === "/" : router.asPath.includes(item.href)) && isClient;
-                return (
-                  <li key={`${item.label}-${i}`} className={`${activeItem ? activeItemClasses[theme.color] : ""}`}>
-                    <Link
-                      data-tina-field={tinaField(item, "label")}
-                      href={`/${item.href}`}
-                      className={`relative select-none text-base inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-8 px-4 ${activeItem ? `` : `opacity-70`}`}
-                    >
-                      {item.label}
-                      {activeItem && (
-                        <svg
-                          className={`absolute bottom-0 left-1/2 w-[180%] h-full -translate-x-1/2 -z-1 opacity-10 dark:opacity-15 ${activeBackgroundClasses[theme.color]}`}
-                          preserveAspectRatio="none"
-                          viewBox="0 0 230 230"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <rect
-                            x="230"
-                            y="230"
-                            width="230"
-                            height="230"
-                            transform="rotate(-180 230 230)"
-                            fill="url(#paint0_radial_1_33)"
-                          />
-                          <defs>
-                            <radialGradient
-                              id="paint0_radial_1_33"
-                              cx="0"
-                              cy="0"
-                              r="1"
-                              gradientUnits="userSpaceOnUse"
-                              gradientTransform="translate(345 230) rotate(90) scale(230 115)"
-                            >
-                              <stop stopColor="currentColor" />
-                              <stop
-                                offset="1"
-                                stopColor="currentColor"
-                                stopOpacity="0"
-                              />
-                            </radialGradient>
-                          </defs>
-                        </svg>
-                      )}
-                    </Link>
-                  </li>
-                );
-              })}
-          </ul>
         </div>
         {menuOpen && (
-          <div className="lg:hidden absolute top-16 left-0 right-0 bg-white dark:bg-gray-800 shadow-lg z-20">
+          <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center">
             <ul className="flex flex-col gap-4 p-4">
               {data.nav &&
                 data.nav.map((item, i) => {
