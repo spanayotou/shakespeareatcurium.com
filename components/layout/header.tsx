@@ -54,6 +54,10 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
     setIsClient(true);
   }, []);
 
+  const handleMenuItemClick = () => {
+    setMenuOpen(false); // Close the menu when a menu item is clicked
+  };
+
   return (
     <div className={`relative overflow-hidden bg-gradient-to-b ${headerColorCss}`}>
       <Container size="custom" className="py-0 relative z-10 max-w-8xl">
@@ -89,6 +93,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
                         data-tina-field={tinaField(item, "label")}
                         href={`/${item.href}`}
                         className={`relative select-none text-base inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-2 px-4 ${activeItem ? `` : `opacity-70`}`}
+                        onClick={handleMenuItemClick} // Close menu when menu item is clicked
                       >
                         {item.label}
                         {activeItem && (
