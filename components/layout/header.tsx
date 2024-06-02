@@ -52,16 +52,6 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);
-
-    const handleRouteChange = () => {
-      setMenuOpen(false); // Close the mobile menu when a route change occurs
-    };
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
   }, []);
 
   return (
@@ -88,7 +78,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
           </div>
         </div>
         {menuOpen && (
-          <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-95 z-50 flex justify-center items-center">
+          <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center">
             <ul className="flex flex-col gap-4 p-4">
               {data.nav &&
                 data.nav.map((item, i) => {
