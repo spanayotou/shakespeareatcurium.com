@@ -68,7 +68,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
     <div className={`relative overflow-hidden bg-gradient-to-b ${headerColorCss}`}>
       <Container size="custom" className="py-0 relative z-10 max-w-8xl">
         <div className="flex items-center justify-between gap-6">
-          <h4 className="select-none text-3xl font-bold tracking-tight my-4 transition duration-150 ease-out transform">
+          <h4 className="select-none text-3xl font-bold tracking-tight my-4 transition duration-150 ease-out transform text-black">
             <Link href="/" className="flex gap-1 items-center whitespace-nowrap tracking-[.002em] text-black">
               <img
                 src={data.image as string}
@@ -88,7 +88,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
           </div>
         </div>
         {menuOpen && (
-          <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center">
+          <div className="fixed top-0 left-0 w-full h-full bg-white z-50 flex justify-center items-center">
             <ul className="flex flex-col gap-4 p-4">
               {data.nav &&
                 data.nav.map((item, i) => {
@@ -98,8 +98,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
                       <Link
                         data-tina-field={tinaField(item, "label")}
                         href={`/${item.href}`}
-                        className={`relative select-none
-                        text-xl inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-2 px-4 ${activeItem ? `` : `opacity-70`} text-white`}
+                        className={`relative select-none text-xl inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-2 px-4 ${activeItem ? `` : `opacity-70`} text-black`}
                       >
                         {item.label}
                         {activeItem && (
@@ -150,6 +149,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
           } to-transparent bottom-0 left-4 right-4 -z-1 opacity-5`}
         />
       </Container>
+
     </div>
   );
 };
