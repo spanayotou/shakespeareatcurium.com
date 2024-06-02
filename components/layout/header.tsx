@@ -28,9 +28,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
 
   const headerColorCss = data.color === "primary" ? headerColor.primary[theme.color] : headerColor.default;
 
-  const [isClient, setIsClient] = useState(false);
   useEffect(() => {
-    setIsClient(true);
     const mediaQuery = window.matchMedia("(max-width: 768px)");
     setIsMobile(mediaQuery.matches);
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
@@ -71,7 +69,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
               </Link>
             )}
           </h4>
-          {isMobile && (
+          {isMobile ? (
             <div className="lg:hidden">
               <button
                 onClick={toggleMenu}
@@ -80,70 +78,26 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
                 {menuOpen ? "✕" : "☰"}
               </button>
             </div>
-          )}
-        </div>
-        {menuOpen && (
-          <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-95 z-50 flex justify-center items-center">
-            <ul className="flex flex-col gap-4 p-4">
-              {data.nav &&
-                data.nav.map((item, i) => {
-                  const activeItem = (item.href === "" ? router.asPath === "/" : router.asPath.includes(item.href)) && isClient;
-                  return (
-                    <li key={`${item.label}-${i}`} className={`${activeItem ? "active" : ""}`}>
+          ) : (
+            <nav className="hidden lg:block">
+              <ul className="flex gap-4">
+                {data.nav &&
+                  data.nav.map((item, i) => (
+                    <li key={`${item.label}-${i}`}>
                       <Link
                         data-tina-field={tinaField(item, "label")}
                         href={`/${item.href}`}
-                        className={`relative select-none text-base inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-2 px-4 ${activeItem ? `` : `opacity-70`}`}
+                        className="select-none text-base inline-block tracking-wide transition duration-150 ease-out hover:opacity-100"
                         onClick={handleMenuItemClick} // Close menu when menu item is clicked
                       >
                         {item.label}
-                        {activeItem && (
-                          <svg
-                            className={`absolute bottom-0 left-1/2 w-[180%] h-full -translate-x-1/2 -z-1 opacity-10 dark:opacity-15`}
-                            preserveAspectRatio="none"
-                            viewBox="0 0 230 230"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <rect
-                              x="230"
-                              y="230"
-                              width="230"
-                              height="230"
-                              transform="rotate(-180 230 230)"
-                              fill="url(#paint0_radial_1_33)"
-                            />
-                            <defs>
-                              <radialGradient
-                                id="paint0_radial_1_33"
-                                cx="0"
-                                cy="0"
-                                r="1"
-                                gradientUnits="userSpaceOnUse"
-                                gradientTransform="translate(345 230) rotate(90) scale(230 115)"
-                              >
-                                <stop stopColor="currentColor" />
-                                <stop
-                                  offset="1"
-                                  stopColor="currentColor"
-                                  stopOpacity="0"
-                                />
-                              </radialGradient>
-                            </defs>
-                          </svg>
-                        )}
                       </Link>
                     </li>
-                  );
-                })}
-            </ul>
-          </div>
-        )}
-        <div
-          className={`absolute h-1 bg-gradient-to-r from-transparent ${
-            data.color === "primary" ? `via-white` : `via-black dark:via-white`
-          } to-transparent bottom-0 left-4 right-4 -z-1 opacity-5`}
-        />
+                  ))}
+              </ul>
+            </nav>
+          )}
+        </div>
       </Container>
     </div>
   );
