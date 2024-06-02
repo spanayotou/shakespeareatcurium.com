@@ -1,12 +1,12 @@
-import * as React from "react";
+import React from "react";
 import { Actions } from "../util/actions";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { useTheme } from "../layout";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { tinaField } from "tinacms/dist/react";
 import type { TinaTemplate } from "tinacms";
 import { PageBlocksHero } from "../../tina/__generated__/types";
-import { tinaField } from "tinacms/dist/react";
 
 export const Hero = ({ data }: { data: PageBlocksHero }) => {
   const theme = useTheme();
@@ -31,7 +31,7 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
           {data.tagline && (
             <h2
               data-tina-field={tinaField(data, "tagline")}
-              className="relative inline-block px-3 py-1 mb-8 text-md font-bold tracking-wide title-font z-20"
+              className="relative inline-block px-3 py-1 mb-8 text-md font-bold tracking-wide title-font z-5"
             >
               {data.tagline}
               <span className="absolute w-full h-full left-0 top-0 rounded-full -z-1 bg-current opacity-7"></span>
@@ -40,7 +40,7 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
           {data.headline && (
             <h3
               data-tina-field={tinaField(data, "headline")}
-              className={`w-full relative	mb-10 text-5xl font-extrabold tracking-normal leading-tight title-font`}
+              className={`w-full relative mb-10 text-5xl font-extrabold tracking-normal leading-tight title-font`}
             >
               <span
                 className={`bg-clip-text text-transparent bg-gradient-to-r  ${
@@ -54,7 +54,6 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
             </h3>
           )}
 
-
           {data.text && (
             <div
               data-tina-field={tinaField(data, "text")}
@@ -66,12 +65,12 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
             </div>
           )}
 
-          
           {data.actions && (
             <Actions
               className="justify-center md:justify-start py-2"
               parentColor={data.color}
               actions={data.actions}
+              style={{ zIndex: 5 }} // Set z-index to 5 for the button
             />
           )}
         </div>
@@ -79,6 +78,7 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
           <div
             data-tina-field={tinaField(data.image, "src")}
             className="relative row-start-1 md:col-span-2 flex justify-center"
+            style={{ zIndex: 5 }} // Set z-index to 5 for the image
           >
             <img
               className="absolute w-full rounded-lg max-w-xs md:max-w-none h-auto blur-2xl brightness-150 contrast-[0.9] dark:brightness-150 saturate-200 opacity-50 dark:opacity-30 mix-blend-multiply dark:mix-blend-hard-light"
@@ -86,7 +86,7 @@ export const Hero = ({ data }: { data: PageBlocksHero }) => {
               aria-hidden="true"
             />
             <img
-              className="relative z-10 w-full max-w-xs rounded-lg md:max-w-none h-auto"
+              className="relative z-5 w-full max-w-xs rounded-lg md:max-w-none h-auto"
               alt={data.image.alt}
               src={data.image.src}
             />
@@ -108,7 +108,8 @@ export const heroBlockSchema: TinaTemplate = {
       text: "Phasellus scelerisque, libero eu finibus rutrum, risus risus accumsan libero, nec molestie urna dui a leo.",
     },
   },
-  fields: [
+  fields:
+  [
     {
       type: "string",
       label: "Tagline",
@@ -194,3 +195,5 @@ export const heroBlockSchema: TinaTemplate = {
     },
   ],
 };
+
+export default Hero;
