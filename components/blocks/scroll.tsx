@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Link from "next/link"; // Import Link from Next.js
+import { useRouter } from "next/router"; // Import useRouter from Next.js
 import { useTheme } from "../layout";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
@@ -10,6 +10,7 @@ import { isMobile as isMobileDevice } from "react-device-detect";
 
 export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
   const theme = useTheme();
+  const router = useRouter(); // Use useRouter hook from Next.js
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const isMobile = useMobileCheck(); 
 
@@ -40,6 +41,10 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
   console.log('Is Mobile:', isMobile);
   console.log('Current Image URL:', currentImage);
 
+  const handleImageClick = (url) => {
+    router.push(url); // Programmatically navigate to the specified URL
+  };
+
   return (
     <Section color={data?.color} className="w-screen h-screen overflow-hidden">
       <div className="relative w-full h-full flex flex-col items-center justify-center">
@@ -50,21 +55,20 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
             style={{
               backgroundImage: `url(${currentImage || ""})`,
             }}
+            onClick={() => handleImageClick(data.images[currentImageIndex].url)} // Handle image click
           >
-            <Link href={data.images[currentImageIndex].url || '/'} key={currentImageIndex}> {/* Use the URL provided in the image object */}
-              <a className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white">
-                {data?.texts?.[currentImageIndex] && (
-                  <div className="text-center px-4 md:px-8">
-                    <h2 className="text-2xl md:text-4xl font-extrabold leading-tight mb-4 font-sans">
-                      {data.texts[currentImageIndex].headline}
-                    </h2>
-                    <p className="block opacity-80 text-2xl md:text-8xl font-serif">
-                      {data.texts[currentImageIndex].quote}
-                    </p>
-                  </div>
-                )}
-              </a>
-            </Link>
+            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white">
+              {data?.texts?.[currentImageIndex] && (
+                <div className="text-center px-4 md:px-8">
+                  <h2 className="text-2xl md:text-4xl font-extrabold leading-tight mb-4 font-sans">
+                    {data.texts[currentImageIndex].headline}
+                  </h2>
+                  <p className="block opacity-80 text-2xl md:text-8xl font-serif">
+                    {data.texts[currentImageIndex].quote}
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         )}
         <div className="mt-4 flex items-center">
@@ -157,7 +161,6 @@ export const scrollBlockSchema: TinaTemplate = {
     },
   ],
 };
-
 
 // Custom hook to check if it's a mobile device
 function useMobileCheck() {
