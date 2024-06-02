@@ -150,3 +150,5 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
         />
       </Container>
     </div>
+  );
+};
