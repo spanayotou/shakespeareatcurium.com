@@ -10,24 +10,9 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
   const router = useRouter();
   const theme = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-
-    const handleRouteChange = () => {
-      setMenuOpen(false); // Close the mobile menu when a route change occurs
-    };
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, []);
 
   const headerColor = {
-    default: "text-white dark:text-white from-gray-50 to-white dark:from-gray-800 dark:to-gray-900",
+    default: "text-black dark:text-white from-gray-50 to-white dark:from-gray-800 dark:to-gray-900",
     primary: {
       blue: "text-white from-blue-300 to-blue-500",
       teal: "text-white from-teal-400 to-teal-500",
@@ -64,12 +49,27 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
     yellow: "text-yellow-500",
   };
 
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+
+    const handleRouteChange = () => {
+      setMenuOpen(false); // Close the mobile menu when a route change occurs
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, []);
+
   return (
     <div className={`relative overflow-hidden bg-gradient-to-b ${headerColorCss}`}>
       <Container size="custom" className="py-0 relative z-10 max-w-8xl">
         <div className="flex items-center justify-between gap-6">
-          <h4 className="select-none text-2xl font-bold tracking-tight my-4 transition duration-150 ease-out transform text-white">
-            <Link href="/" className="flex gap-1 items-center whitespace-nowrap tracking-[.002em]">
+          <h4 className="select-none text-3xl font-bold tracking-tight my-4 transition duration-150 ease-out transform">
+            <Link href="/" className="flex gap-1 items-center whitespace-nowrap tracking-[.002em] text-black">
               <img
                 src={data.image as string}
                 alt={data.name}
@@ -81,7 +81,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
           <div className="lg:hidden">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-3xl text-white focus:outline-none"
+              className="text-xl focus:outline-none text-black"
             >
               {menuOpen ? "✕" : "☰"}
             </button>
@@ -98,7 +98,8 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
                       <Link
                         data-tina-field={tinaField(item, "label")}
                         href={`/${item.href}`}
-                        className={`relative select-none text-lg text-white inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-2 px-4 ${activeItem ? `` : `opacity-70`}`}
+                        className={`relative select-none
+                        text-xl inline-block tracking-wide transition duration-150 ease-out hover:opacity-100 py-2 px-4 ${activeItem ? `` : `opacity-70`} text-white`}
                       >
                         {item.label}
                         {activeItem && (
