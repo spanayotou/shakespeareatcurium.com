@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import Link from "next/link"; // Import Link component from Next.js
 import { useTheme } from "../layout";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
@@ -43,26 +44,30 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
     <Section color={data?.color} className="w-screen h-screen overflow-hidden">
       <div className="relative w-full h-full flex flex-col items-center justify-center">
         {data?.images?.length > 0 && (
-          <div
-            data-tina-field={tinaField(data.images[currentImageIndex], "src")}
-            className="relative w-full h-full bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${currentImage || ""})`,
-            }}
-          >
-            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white">
-              {data?.texts?.[currentImageIndex] && (
-                <div className="text-center px-4 md:px-8">
-                  <h2 className="text-2xl md:text-4xl font-extrabold leading-tight mb-4 font-sans">
-                    {data.texts[currentImageIndex].headline}
-                  </h2>
-                  <p className="block opacity-80 text-2xl md:text-8xl font-serif">
-                    {data.texts[currentImageIndex].quote}
-                  </p>
+          <Link href={data.linkUrl || "#"} key={currentImageIndex}> {/* Wrap each image in Link component */}
+            <a>
+              <div
+                data-tina-field={tinaField(data.images[currentImageIndex], "src")}
+                className="relative w-full h-full bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${currentImage || ""})`,
+                }}
+              >
+                <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white">
+                  {data?.texts?.[currentImageIndex] && (
+                    <div className="text-center px-4 md:px-8">
+                      <h2 className="text-2xl md:text-4xl font-extrabold leading-tight mb-4 font-sans">
+                        {data.texts[currentImageIndex].headline}
+                      </h2>
+                      <p className="block opacity-80 text-2xl md:text-8xl font-serif">
+                        {data.texts[currentImageIndex].quote}
+                      </p>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          </div>
+              </div>
+            </a>
+          </Link>
         )}
         <div className="mt-4 flex items-center">
           {data?.images?.length > 1 && (
@@ -146,6 +151,11 @@ export const scrollBlockSchema: TinaTemplate = {
           name: "quote",
         },
       ],
+    },
+    {
+      type: "string",
+      label: "Link URL", // Add a field for the link URL
+      name: "linkUrl",
     },
   ],
 };
