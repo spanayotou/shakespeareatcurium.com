@@ -58,6 +58,10 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
     setMenuOpen(false); // Close the menu when a menu item is clicked
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div className={`relative overflow-hidden bg-gradient-to-b ${headerColorCss}`}>
       <Container size="custom" className="py-0 relative z-10 max-w-8xl">
@@ -74,7 +78,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
           </h4>
           <div className="lg:hidden">
             <button
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={toggleMenu}
               className="text-xl focus:outline-none"
             >
               {menuOpen ? "✕" : "☰"}
@@ -141,9 +145,11 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
         <div
           className={`absolute h-1 bg-gradient-to-r from-transparent ${
             data.color === "primary" ? `via-white` : `via-black dark:via-white`
-          } to-transparent bottom-0 left-4 right-4 -z-1 opacity-5`}
-        />
-      </Container>
-    </div>
-  );
-};
+          } to-transparent bottom-0 left-4 right-4 -z-1
+          opacity-5`}
+          />
+        </Container>
+      </div>
+    );
+  };
+  
