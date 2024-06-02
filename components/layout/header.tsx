@@ -10,6 +10,7 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
   const router = useRouter();
   const theme = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const headerColor = {
     default: "text-black dark:text-white from-gray-50 to-white dark:from-gray-800 dark:to-gray-900",
@@ -52,6 +53,11 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    setIsMobile(mediaQuery.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mediaQuery.addListener(handler);
+    return () => mediaQuery.removeListener(handler);
   }, []);
 
   const handleMenuItemClick = () => {
@@ -67,23 +73,36 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
       <Container size="custom" className="py-0 relative z-10 max-w-8xl">
         <div className="flex items-center justify-between gap-6">
           <h4 className="select-none text-lg font-bold tracking-tight my-4 transition duration-150 ease-out transform">
-            <Link href="/" className="flex gap-1 items-center whitespace-nowrap tracking-[.002em]">
-              <img
-                src={data.image as string}
-                alt={data.name}
-                className="w-26 h-20"
-              />
-              <span data-tina-field={tinaField(data, "name")}>{data.name}</span>
-            </Link>
+            {isMobile ? (
+              <Link href="/" className="flex gap-1 items-center whitespace-nowrap tracking-[.002em]">
+                <img
+                  src={data.image as string}
+                  alt={data.name}
+                  className="w-26 h-20"
+                />
+                <span data-tina-field={tinaField(data, "name")}>{data.name}</span>
+              </Link>
+            ) : (
+              <Link href="/" className="flex gap-1 items-center whitespace-nowrap tracking-[.002em]">
+                <img
+                  src={data.image as string}
+                  alt={data.name}
+                  className="w-26 h-20"
+                />
+                <span data-tina-field={tinaField(data, "name")}>{data.name}</span>
+              </Link>
+            )}
           </h4>
-          <div className="lg:hidden">
-            <button
-              onClick={toggleMenu}
-              className="text-xl focus:outline-none"
-            >
-              {menuOpen ? "✕" : "☰"}
-            </button>
-          </div>
+          {isMobile && (
+            <div className="lg:hidden">
+              <button
+                onClick={toggleMenu}
+                className="text-xl focus:outline-none"
+              >
+                {menuOpen ? "✕" : "☰"}
+              </button>
+            </div>
+          )}
         </div>
         {menuOpen && (
           <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-95 z-50 flex justify-center items-center">
@@ -149,7 +168,5 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
         />
       </Container>
     </div>
- 
-    );
-  };
-  
+  );
+};
