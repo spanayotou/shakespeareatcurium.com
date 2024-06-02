@@ -8,6 +8,7 @@ blocks:
         url: 'https://www.shakespeareatcurium.com/king-lear'
       - src: /uploads/king_lear.png
         mobileSrc: /uploads/lear_mobile.png
+        url: 'https://www.shakespeareatcurium.com/king-lear'
     _template: scroll
 ---
 
