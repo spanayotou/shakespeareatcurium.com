@@ -48,16 +48,18 @@ export const Header = ({ data }: { data: GlobalHeader }) => {
     <div className={`relative overflow-hidden bg-gradient-to-b ${headerColorCss}`}>
       <Container size="custom" className="py-0 relative z-10 max-w-8xl">
         <div className="flex items-center justify-between gap-6">
-          <h4 className={`select-none text-lg font-bold tracking-tight my-4 transition duration-150 ease-out transform ${isMobile ? 'hidden lg:block' : ''}`}>
-            <Link href="/" className="flex gap-1 items-center whitespace-nowrap tracking-[.002em]">
-              <img
-                src={data.image as string}
-                alt={data.name}
-                className="w-26 h-20"
-              />
-              <span data-tina-field={tinaField(data, "name")}>{data.name}</span>
-            </Link>
-          </h4>
+        <h4 className={`select-none text-lg font-bold tracking-tight my-4 transition duration-150 ease-out transform ${isMobile ? '' : 'hidden lg:block'}`}>
+  {isMobile ? data.name : (
+    <Link href="/" className="flex gap-1 items-center whitespace-nowrap tracking-[.002em]">
+      <img
+        src={data.image as string}
+        alt={data.name}
+        className="w-26 h-20"
+      />
+      <span data-tina-field={tinaField(data, "name")}>{data.name}</span>
+    </Link>
+  )}
+</h4>
           <nav className={`lg:flex ${isMobile ? 'hidden' : 'block'}`}>
             <ul className="flex gap-4">
               {data.nav &&
