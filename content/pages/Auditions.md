@@ -56,7 +56,9 @@ blocks:
         icon: true
         link: /
     _template: hero
-  - body: ''
+  - body: |
+      # TESTING
+    color: default
     _template: content
 ---
 
