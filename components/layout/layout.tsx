@@ -18,7 +18,7 @@ export const Layout = ({
   return (
     <>
       <Head>
-        <title>Tina</title>
+        <title>Shakespeare at Kourion</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         {data.theme.font === "nunito" && (
           <>
