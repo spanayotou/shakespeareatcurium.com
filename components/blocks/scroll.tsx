@@ -12,16 +12,16 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
   const theme = useTheme();
   const router = useRouter(); // Use useRouter hook from Next.js
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const isMobile = useMobileCheck();
+  const isMobile = useMobileCheck(); 
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (data?.images?.length > 1) {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % data.images.length);
       }
-    }, 5000);
+    }, 5000); 
 
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); 
   }, [data?.images]);
 
   const nextImage = useCallback(() => {
@@ -46,7 +46,7 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
   };
 
   return (
-    <Section color={data?.color} className="w-screen h-screen overflow-hidden" key={currentImageIndex}> {/* Added key prop */}
+    <Section color={data?.color} className="w-screen h-screen overflow-hidden">
       <div className="relative w-full h-full flex flex-col items-center justify-center">
         {data?.images?.length > 0 && (
           <div
