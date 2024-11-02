@@ -36,13 +36,13 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
   }, [data?.images]);
 
   const currentImage = isMobile ? data.images[currentImageIndex].mobileSrc : data.images[currentImageIndex].src;
-  const currentUrl = data.images[currentImageIndex].url || "#"; // Use "#" as a fallback
+  const currentUrl = data.images[currentImageIndex].url || "/";
 
   console.log('Is Mobile:', isMobile);
   console.log('Current Image URL:', currentImage);
 
   return (
-    <Section color={data?.color} className="w-screen h-screen overflow-hidden">
+    <Section color={data?.color} className="w-screen h-screen overflow-hidden" key={currentImageIndex}>
       <div className="relative w-full h-full flex flex-col items-center justify-center">
         {data?.images?.length > 0 && (
           <Link href={currentUrl} passHref>
