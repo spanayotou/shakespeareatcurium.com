@@ -1,5 +1,5 @@
 ---
-title: Auditions
+title: auditions
 blocks:
   - body: ''
     _template: content
