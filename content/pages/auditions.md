@@ -1,6 +1,11 @@
 ---
 title: auditions
 blocks:
+  - body: |
+      # hello
+
+      ##### helllooo
+    _template: content
   - tagline: ''
     headline: Auditions - Antony and Cleopatra
     text: >
