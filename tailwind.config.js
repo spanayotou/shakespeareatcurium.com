@@ -23,6 +23,15 @@ module.exports = {
         crimson: "#dc143c",
         violet: "#8a2be2",
         plum: "#dda0dd",
+        blue: {
+          lightest: "#E0F2FF", // Very light blue
+          lighter: "#B3E5FF",  // Light blue
+          light: "#4FC3F7",    // Medium-light blue
+          DEFAULT: "#2196F3",  // Primary blue
+          dark: "#1E88E5",     // Dark blue
+          darker: "#1565C0",   // Darker blue
+          darkest: "#0D47A1",  // Very dark blue
+        },
       },
       fontFamily: {
         sans: ["Roboto", ...defaultTheme.fontFamily.sans],
