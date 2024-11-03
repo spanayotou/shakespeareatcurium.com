@@ -7,37 +7,29 @@
 
 /* Custom styles for Markdown content using the `prose` class */
 .prose h1 {
-  @apply text-5xl font-bold text-crimson mb-4;
+  @apply text-5xl font-bold text-blue-darkest mb-4;
 }
 
 .prose h2 {
-  @apply text-4xl font-bold text-teal mb-3;
+  @apply text-4xl font-bold text-blue-dark mb-3;
 }
 
 .prose h3 {
-  @apply text-3xl font-bold text-violet mb-2;
+  @apply text-3xl font-bold text-blue DEFAULT mb-2;
 }
 
 .prose p {
-  @apply text-base text-black leading-relaxed mb-4;
-}
-
-.prose ul {
-  @apply list-disc list-inside mb-4;
-}
-
-.prose li {
-  @apply text-base text-black mb-2;
+  @apply text-base text-blue-dark leading-relaxed mb-4;
 }
 
 .prose a {
-  @apply text-gold underline hover:text-teal;
+  @apply text-blue hover:text-blue-dark; /* Primary blue with a darker hover */
 }
 
 .prose blockquote {
-  @apply italic text-gray-600 border-l-4 border-gray-300 pl-4;
+  @apply italic text-blue-light border-l-4 border-blue-lighter pl-4;
 }
 
 .prose pre {
-  @apply bg-gray-100 p-4 rounded-lg overflow-x-auto;
+  @apply bg-blue-lightest p-4 rounded-lg overflow-x-auto;
 }
