@@ -1,8 +1,8 @@
 ---
 title: auditions
 blocks:
-  - tagline: Here's some text above the other text
-    headline: This Big Text is Totally Awesome
+  - tagline: ''
+    headline: Auditions - Antony and Cleopatra
     text: ''
     _template: hero
 ---
