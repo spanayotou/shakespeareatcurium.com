@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Link from "next/link"; // Import Link from Next.js
+import { useRouter } from "next/router"; // Import useRouter from Next.js
 import { useTheme } from "../layout";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
@@ -10,6 +10,7 @@ import { isMobile as isMobileDevice } from "react-device-detect";
 
 export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
   const theme = useTheme();
+  const router = useRouter(); // Use useRouter hook from Next.js
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const isMobile = useMobileCheck();
 
@@ -36,31 +37,39 @@ export const Scroll = ({ data }: { data: PageBlocksScroll }) => {
   }, [data?.images]);
 
   const currentImage = isMobile ? data.images[currentImageIndex].mobileSrc : data.images[currentImageIndex].src;
-  const currentUrl = data.images[currentImageIndex].url || "#"; // Use "#" as a fallback
 
   console.log('Is Mobile:', isMobile);
   console.log('Current Image URL:', currentImage);
 
+  const handleImageClick = (url) => {
+    router.push(url); // Programmatically navigate to the specified URL
+  };
+
   return (
-    <Section color={data?.color} className="w-screen h-screen overflow-hidden">
+    <Section color={data?.color} className="w-screen h-screen overflow-hidden" key={currentImageIndex}> {/* Added key prop */}
       <div className="relative w-full h-full flex flex-col items-center justify-center">
         {data?.images?.length > 0 && (
-          <Link href={currentUrl} passHref>
-            <a className="relative w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${currentImage || ""})` }}>
-              <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white">
-                {data?.texts?.[currentImageIndex] && (
-                  <div className="text-center px-4 md:px-8">
-                    <h2 className="text-2xl md:text-4xl font-extrabold leading-tight mb-4 font-sans">
-                      {data.texts[currentImageIndex].headline}
-                    </h2>
-                    <p className="block opacity-80 text-2xl md:text-8xl font-serif">
-                      {data.texts[currentImageIndex].quote}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </a>
-          </Link>
+          <div
+            data-tina-field={tinaField(data.images[currentImageIndex], "src")}
+            className="relative w-full h-full bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${currentImage || ""})`,
+            }}
+            onClick={() => handleImageClick(data.images[currentImageIndex].url)} // Handle image click
+          >
+            <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white">
+              {data?.texts?.[currentImageIndex] && (
+                <div className="text-center px-4 md:px-8">
+                  <h2 className="text-2xl md:text-4xl font-extrabold leading-tight mb-4 font-sans">
+                    {data.texts[currentImageIndex].headline}
+                  </h2>
+                  <p className="block opacity-80 text-2xl md:text-8xl font-serif">
+                    {data.texts[currentImageIndex].quote}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
         )}
         <div className="mt-4 flex items-center">
           {data?.images?.length > 1 && (
