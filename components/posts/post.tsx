@@ -1,7 +1,21 @@
+/**
+Copyright 2021 Forestry.io Holdings, Inc.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
 import React from "react";
 import { Container } from "../util/container";
 import { Section } from "../util/section";
 import { useTheme } from "../layout";
+import format from "date-fns/format";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Prism } from "tinacms/dist/rich-text/prism";
 import type { TinaMarkdownContent, Components } from "tinacms/dist/rich-text";
@@ -114,19 +128,59 @@ export const Post = (props: PostType) => {
       "from-yellow-400 to-yellow-500 dark:from-yellow-300 dark:to-yellow-500",
   };
 
+  const date = new Date(props.date);
+  let formattedDate = "";
+  if (!isNaN(date.getTime())) {
+    formattedDate = format(date, "MMM dd, yyyy");
+  }
+
   return (
     <Section className="flex-1">
       <Container width="small" className={`flex-1 pb-2`} size="large">
         <h2
           data-tina-field={tinaField(props, "title")}
-          className={`w-full relative mb-8 text-6xl font-extrabold tracking-normal text-center title-font`}
+          className={`w-full relative	mb-8 text-6xl font-extrabold tracking-normal text-center title-font`}
         >
           <span
-            className={`bg-clip-text text-transparent bg-gradient-to-r ${titleColorClasses[theme.color]}`}
+            className={`bg-clip-text text-transparent bg-gradient-to-r ${
+              titleColorClasses[theme.color]
+            }`}
           >
             {props.title}
           </span>
         </h2>
+        <div
+          data-tina-field={tinaField(props, "author")}
+          className="flex items-center justify-center mb-16"
+        >
+          {props.author && (
+            <>
+              <div className="flex-shrink-0 mr-4">
+                <img
+                  data-tina-field={tinaField(props.author, "avatar")}
+                  className="h-14 w-14 object-cover rounded-full shadow-sm"
+                  src={props.author.avatar}
+                  alt={props.author.name}
+                />
+              </div>
+              <p
+                data-tina-field={tinaField(props.author, "name")}
+                className="text-base font-medium text-gray-600 group-hover:text-gray-800 dark:text-gray-200 dark:group-hover:text-white"
+              >
+                {props.author.name}
+              </p>
+              <span className="font-bold text-gray-200 dark:text-gray-500 mx-2">
+                —
+              </span>
+            </>
+          )}
+          <p
+            data-tina-field={tinaField(props, "date")}
+            className="text-base text-gray-400 group-hover:text-gray-500 dark:text-gray-300 dark:group-hover:text-gray-150"
+          >
+            {formattedDate}
+          </p>
+        </div>
       </Container>
       {props.heroImg && (
         <div className="px-4 w-full">
