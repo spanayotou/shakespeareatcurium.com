@@ -19,6 +19,7 @@ blocks:
       \## King Lear Synopsis
 
 
+
       King Lear is a tragedy that explores the dark sides of power and betrayal
       as Lear, the aging king of Britain, divides his kingdom among his
       daughters, leading to betrayal, madness, and downfall. This production
@@ -28,10 +29,12 @@ blocks:
       \## A Note from our Director
 
 
+
       Welcome to our audition process! We're excited to embark on this journey
       of bringing one of Shakespeare's greatest works to the stage. Our vision
       is to create a compelling and authentic production that resonates with
       audiences.
+
 
 
       \## Audition Registration
@@ -51,6 +54,8 @@ blocks:
 
 
       \## Location
+
+
 
 
       Theatre Enaf, Agia Fila
