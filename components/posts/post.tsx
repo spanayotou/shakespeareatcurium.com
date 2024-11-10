@@ -113,7 +113,7 @@ export const Post = (props: PostType) => {
       <Container width="small" className={`flex-1 pb-2`} size="large">
         <h2
           data-tina-field={tinaField(props, "title")}
-          className={`w-full relative mb-4 text-4xl font-extrabold tracking-normal text-center title-font`}
+          className={`w-full relative mb-8 text-4xl font-extrabold tracking-normal text-center title-font`}
         >
           <span
             className={`bg-clip-text text-transparent bg-gradient-to-r ${
@@ -123,6 +123,29 @@ export const Post = (props: PostType) => {
             {props.title}
           </span>
         </h2>
+        <div
+          data-tina-field={tinaField(props, "author")}
+          className="flex items-center justify-center mb-16"
+        >
+          {props.author && (
+            <>
+              <div className="flex-shrink-0 mr-4">
+                <img
+                  data-tina-field={tinaField(props.author, "avatar")}
+                  className="h-14 w-14 object-cover rounded-full shadow-sm"
+                  src={props.author.avatar}
+                  alt={props.author.name}
+                />
+              </div>
+              <p
+                data-tina-field={tinaField(props.author, "name")}
+                className="text-base font-medium text-gray-600 group-hover:text-gray-800 dark:text-gray-200 dark:group-hover:text-white"
+              >
+                {props.author.name}
+              </p>
+            </>
+          )}
+        </div>
       </Container>
       {props.heroImg && (
         <div className="px-4 w-full">
