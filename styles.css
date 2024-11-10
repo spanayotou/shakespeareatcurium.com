@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* Import Tailwind's base, components, and utilities */
 @tailwind base;
 @tailwind components;
@@ -20,7 +18,7 @@
 
 .prose p {
   @apply text-base text-black leading-relaxed mb-4;
-  }
+}
 
 .prose a {
   @apply text-blue hover:text-blue-dark; /* Primary blue with a darker hover */
@@ -32,4 +30,21 @@
 
 .prose pre {
   @apply bg-blue-lightest p-4 rounded-lg overflow-x-auto;
+}
+
+/* New styles for tables in Markdown */
+.prose table {
+  @apply w-full border-collapse border border-gray-200 rounded-lg overflow-hidden;
+}
+
+.prose th, .prose td {
+  @apply border border-gray-200 p-3 text-left;
+}
+
+.prose th {
+  @apply bg-blue-100 font-semibold;
+}
+
+.prose td {
+  @apply bg-white;
 }
