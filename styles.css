@@ -5,31 +5,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles for Markdown content */
-.markdown-content h1 {
-  @apply text-5xl font-bold text-crimson mb-4;
+/* Custom styles for Markdown content using the `prose` class */
+.prose h1 {
+  @apply text-5xl font-bold text-blue-darkest mb-4;
 }
 
-.markdown-content h2 {
-  @apply text-4xl font-bold text-teal mb-3;
+.prose h2 {
+  @apply text-4xl font-bold text-blue-dark mb-3;
 }
 
-.markdown-content h3 {
-  @apply text-3xl font-bold text-violet mb-2;
+.prose h3 {
+  @apply text-3xl font-bold text-blue-dark mb-2;
 }
 
-.markdown-content p {
-  @apply text-base text-black leading-relaxed mb-4;
+.prose p {
+  @apply text-base text-blue-dark leading-relaxed mb-4;
 }
 
-.markdown-content ul {
-  @apply list-disc list-inside mb-4;
+.prose a {
+  @apply text-blue hover:text-blue-dark; /* Primary blue with a darker hover */
 }
 
-.markdown-content li {
-  @apply text-base text-black mb-2;
+.prose blockquote {
+  @apply italic text-blue-light border-l-4 border-blue-lighter pl-4;
 }
 
-.markdown-content a {
-  @apply text-gold underline hover:text-teal;
+.prose pre {
+  @apply bg-blue-lightest p-4 rounded-lg overflow-x-auto;
 }

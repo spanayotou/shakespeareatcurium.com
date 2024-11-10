@@ -1,24 +1,23 @@
 ---
 title: auditions
 blocks:
-  - body: |
-      # hello
-
-      ##### helllooo
-    _template: content
-  - tagline: ''
+  - tagline: Here's some text above the other text
     headline: Auditions - Antony and Cleopatra
     text: >
-      ***
+      \---
 
 
-      ## title: "King Lear Auditions"
+      title: "King Lear Auditions"
 
 
-      # King Lear Auditions
+      \---
 
 
-      ## King Lear Synopsis
+      \# King Lear Auditions
+
+
+      \## King Lear Synopsis
+
 
 
       King Lear is a tragedy that explores the dark sides of power and betrayal
@@ -27,7 +26,8 @@ blocks:
       aims to bring the rich Shakespearean tale to life.
 
 
-      ## A Note from our Director
+      \## A Note from our Director
+
 
 
       Welcome to our audition process! We're excited to embark on this journey
@@ -36,22 +36,26 @@ blocks:
       audiences.
 
 
-      ## Audition Registration
+
+      \## Audition Registration
 
 
-      To be part of this production, please [fill out the Audition Registration
-      Form](https://example.com/audition-form).
+      To be part of this production, please \[fill out the Audition Registration
+      Form]\(https\://example.com/audition-form).
 
 
-      ## Audition Dates
+      \## Audition Dates
 
 
-      * **Wednesday, 22 November:** 7:30 - 9:30 PM
-
-      * **Saturday, 25 November:** 1:30 - 4:00 PM
+      \- \*\*Wednesday, 22 November:\*\* 7:30 - 9:30 PM
 
 
-      ## Location
+      \- \*\*Saturday, 25 November:\*\* 1:30 - 4:00 PM
+
+
+      \## Location
+
+
 
 
       Theatre Enaf, Agia Fila
