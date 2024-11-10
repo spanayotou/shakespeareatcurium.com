@@ -26,9 +26,6 @@ const components: Components<{
     children: TinaMarkdownContent;
     authorName: string;
   };
-  DateTime: {
-    format?: string;
-  };
   NewsletterSignup: {
     placeholder: string;
     buttonText: string;
@@ -49,22 +46,6 @@ const components: Components<{
         </blockquote>
       </div>
     );
-  },
-  DateTime: (props) => {
-    const dt = React.useMemo(() => {
-      return new Date();
-    }, []);
-
-    switch (props.format) {
-      case "iso":
-        return <span>{format(dt, "yyyy-MM-dd")}</span>;
-      case "utc":
-        return <span>{format(dt, "eee, dd MMM yyyy HH:mm:ss OOOO")}</span>;
-      case "local":
-        return <span>{format(dt, "P")}</span>;
-      default:
-        return <span>{format(dt, "P")}</span>;
-    }
   },
   NewsletterSignup: (props) => {
     return (
