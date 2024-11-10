@@ -19,8 +19,8 @@
 }
 
 .prose p {
-  @apply text-base text-blue-dark leading-relaxed mb-4;
-}
+  @apply text-base text-black leading-relaxed mb-4;
+  }
 
 .prose a {
   @apply text-blue hover:text-blue-dark; /* Primary blue with a darker hover */
