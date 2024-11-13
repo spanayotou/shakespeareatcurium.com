@@ -1,23 +1,42 @@
+
 /* Import Tailwind's base, components, and utilities */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles for Markdown content using the `prose` class */
+/* Light theme (default) */
+body {
+  @apply bg-white text-black;
+}
 
-/* Enforce light theme colors */
+/* Dark theme overrides */
+.dark body {
+  @apply bg-white text-black; /* Enforces a white background and black text in dark mode */
+}
 
-body, .prose {
-    background-color: white !important;
-    color: black !important;
-  }
-  
-  .prose h1, .prose h2, .prose h3, .prose p, .prose a, .prose blockquote, .prose pre, .prose table, .prose th, .prose td {
-    background-color: white !important;
-    color: black !important;
-    border-color: #d1d5db !important; /* Light gray border */
-  }
-  
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose p,
+.dark .prose a,
+.dark .prose blockquote,
+.dark .prose pre,
+.dark .prose table,
+.dark .prose th,
+.dark .prose td {
+  /* Apply light theme colors in dark mode */
+  background-color: white !important; /* White background */
+  color: black !important; /* Black text */
+}
+
+.dark .prose a {
+  color: #2196F3; /* Blue link color to match light theme */
+}
+
+.dark .prose blockquote {
+  color: #4FC3F7; /* Lighter blue for blockquotes to match light theme */
+  border-left-color: #B3E5FF;
+}
 
 .prose h1 {
   @apply text-5xl font-bold text-blue-darkest mb-4;
