@@ -4,6 +4,7 @@ blocks:
   - images:
       - src: /uploads/cleo_banner.png
         mobileSrc: /uploads/cleo_mobile.png
+        url: 'https://www.shakespeareatcurium.com/posts/auditions'
       - src: /uploads/vintage.png
         alt: ''
         mobileSrc: /uploads/kourion_portrait_new.png
