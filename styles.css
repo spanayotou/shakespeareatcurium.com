@@ -5,9 +5,19 @@
 
 /* Custom styles for Markdown content using the `prose` class */
 
-:root {
-    color-scheme: light;
+/* Enforce light theme colors */
+
+body, .prose {
+    background-color: white !important;
+    color: black !important;
   }
+  
+  .prose h1, .prose h2, .prose h3, .prose p, .prose a, .prose blockquote, .prose pre, .prose table, .prose th, .prose td {
+    background-color: white !important;
+    color: black !important;
+    border-color: #d1d5db !important; /* Light gray border */
+  }
+  
 
 .prose h1 {
   @apply text-5xl font-bold text-blue-darkest mb-4;
