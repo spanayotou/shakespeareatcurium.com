@@ -4,6 +4,11 @@
 @tailwind utilities;
 
 /* Custom styles for Markdown content using the `prose` class */
+
+:root {
+    color-scheme: light;
+  }
+
 .prose h1 {
   @apply text-5xl font-bold text-blue-darkest mb-4;
 }
