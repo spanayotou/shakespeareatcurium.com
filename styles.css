@@ -4,11 +4,6 @@
 @tailwind utilities;
 
 /* Custom styles for Markdown content using the `prose` class */
-
-:root {
-    color-scheme: light;
-  }
-
 .prose h1 {
   @apply text-5xl font-bold text-blue-darkest mb-4;
 }
@@ -25,31 +20,54 @@
   @apply text-base text-black leading-relaxed mb-4;
 }
 
-.prose a {
-  @apply text-blue hover:text-blue-dark; /* Primary blue with a darker hover */
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .prose p {
+    @apply text-white; /* Make paragraph text white in dark mode */
+  }
+
+  .prose a {
+    @apply text-blue-300 hover:text-blue-200; /* Lighter blue for links in dark mode */
+  }
+
+  .prose blockquote {
+    @apply italic text-blue-light border-l-4 border-blue-lighter pl-4;
+  }
+
+  .prose pre {
+    @apply bg-blue-lightest p-4 rounded-lg overflow-x-auto;
+  }
+
+  /* New dark mode table styles */
+  .prose table {
+    @apply border-gray-600;
+  }
+
+  .prose th {
+    @apply bg-blue-900 text-white;
+  }
+
+  .prose td {
+    @apply bg-gray-800 text-white;
+  }
 }
 
-.prose blockquote {
-  @apply italic text-blue-light border-l-4 border-blue-lighter pl-4;
-}
+/* Alternatively, you can use Tailwind's dark mode variant (class-based toggle or prefers-color-scheme) */
+@layer components {
+  .dark .prose table {
+    @apply border-gray-600;
+  }
 
-.prose pre {
-  @apply bg-blue-lightest p-4 rounded-lg overflow-x-auto;
-}
+  .dark .prose th {
+    @apply bg-blue-900 text-white;
+  }
 
-/* New styles for tables in Markdown */
-.prose table {
-  @apply w-full border-collapse border border-gray-200 rounded-lg overflow-hidden;
-}
+  .dark .prose td {
+    @apply bg-gray-800 text-white;
+  }
 
-.prose th, .prose td {
-  @apply border border-gray-200 p-3 text-left;
-}
-
-.prose th {
-  @apply bg-blue-100 font-semibold;
-}
-
-.prose td {
-  @apply bg-white;
+  /* Make paragraph text white in dark mode */
+  .dark .prose p {
+    @apply text-white;
+  }
 }
