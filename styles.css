@@ -4,11 +4,6 @@
 @tailwind utilities;
 
 /* Custom styles for Markdown content using the `prose` class */
-
-:root {
-    color-scheme: light;
-  }
-
 .prose h1 {
   @apply text-5xl font-bold text-blue-darkest mb-4;
 }
@@ -46,10 +41,41 @@
   @apply border border-gray-200 p-3 text-left;
 }
 
+/* Default (light mode) table styles */
 .prose th {
   @apply bg-blue-100 font-semibold;
 }
 
 .prose td {
   @apply bg-white;
+}
+
+/* Dark mode table styles */
+@media (prefers-color-scheme: dark) {
+  .prose table {
+    @apply border-gray-600;
+  }
+
+  .prose th {
+    @apply bg-blue-900 text-white;
+  }
+
+  .prose td {
+    @apply bg-gray-800 text-white;
+  }
+}
+
+/* Alternatively, you can use Tailwind's dark mode variant (class-based toggle or prefers-color-scheme) */
+@layer components {
+  .dark .prose table {
+    @apply border-gray-600;
+  }
+
+  .dark .prose th {
+    @apply bg-blue-900 text-white;
+  }
+
+  .dark .prose td {
+    @apply bg-gray-800 text-white;
+  }
 }
