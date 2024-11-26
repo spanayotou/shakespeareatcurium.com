@@ -27,7 +27,7 @@
 
 /* Visited links */
 .prose a:visited {
-  @apply text-purple-600;
+  @apply text-blue-500; /* or any other color you prefer */
 }
 
 /* Hover state */
@@ -83,3 +83,5 @@
     @apply bg-gray-800 text-white;
   }
 }
+
+
