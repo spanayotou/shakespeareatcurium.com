@@ -84,7 +84,7 @@ const components: Components<{
   // Custom hyperlink component for proper styling
   a: (props) => (
     <a
-      href={props.href}
+      href={props.url} // Use `props.url` instead of `props.href`
       className="text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
     >
       {props.children}
