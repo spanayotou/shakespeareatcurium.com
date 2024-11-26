@@ -20,14 +20,46 @@
   @apply text-base text-black leading-relaxed mb-4;
 }
 
-/* Dark mode adjustments */
+/* General link formatting */
+.prose a {
+  @apply text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+/* Visited links */
+.prose a:visited {
+  @apply text-purple-600;
+}
+
+/* Hover state */
+.prose a:hover {
+  @apply text-blue-800;
+}
+
+/* Focus state */
+.prose a:focus {
+  @apply ring-2 ring-blue-500;
+}
+
+/* Dark mode adjustments using prefers-color-scheme */
 @media (prefers-color-scheme: dark) {
   .prose p {
     @apply text-white; /* Make paragraph text white in dark mode */
   }
 
   .prose a {
-    @apply text-blue-300 hover:text-blue-200; /* Lighter blue for links in dark mode */
+    @apply text-blue-300 hover:text-blue-500; /* Lighter blue for links in dark mode */
+  }
+
+  .prose a:visited {
+    @apply text-purple-400;
+  }
+
+  .prose a:hover {
+    @apply text-blue-200;
+  }
+
+  .prose a:focus {
+    @apply ring-2 ring-blue-300;
   }
 
   .prose blockquote {
@@ -49,25 +81,5 @@
 
   .prose td {
     @apply bg-gray-800 text-white;
-  }
-}
-
-/* Alternatively, you can use Tailwind's dark mode variant (class-based toggle or prefers-color-scheme) */
-@layer components {
-  .dark .prose table {
-    @apply border-gray-600;
-  }
-
-  .dark .prose th {
-    @apply bg-blue-900 text-white;
-  }
-
-  .dark .prose td {
-    @apply bg-gray-800 text-white;
-  }
-
-  /* Make paragraph text white in dark mode */
-  .dark .prose p {
-    @apply text-white;
   }
 }
