@@ -2,8 +2,8 @@
 title: home
 blocks:
   - images:
-      - src: /uploads/cleo_desk_fix.png
-        mobileSrc: /uploads/cleo_mobile.png
+      - src: /uploads/cleo.png
+        mobileSrc: /uploads/cleo_desk.png
         url: 'https://www.shakespeareatcurium.com/posts/auditions'
       - src: /uploads/vintage.png
         alt: ''
